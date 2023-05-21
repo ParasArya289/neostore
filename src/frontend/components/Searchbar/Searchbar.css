@@ -1,19 +1,36 @@
 .searchbar{
     min-width:15rem;
     padding: 0.5rem;
-    border:0.5px solid black;
-    /* border-radius: 6px; */
     background-color:rgba(255, 255, 255, 0);
     border-left: none;
     border-right: none;
     border-top: none;
+    border-bottom:0.5px solid rgba(0, 0, 0, 0.5);
     backdrop-filter:blur(15px);
     -webkit-backdrop-filter: blur(15px);
     caret-color:black;
+    outline:none;
+
 }
+
 .searchbar::placeholder{
-    color:rgba(0, 0, 0, 0.738);
+    color:rgba(0, 0, 0, 0.5);
+    text-align: center;    
 }
+.searchbar:hover{
+    border-bottom: 1px solid black;
+    transition: border 0.5s ease-in-out;
+}
+.searchbar:hover::placeholder{
+    color:rgba(0, 0, 0, 0.89);
+    transition: color 0.5s ease-in-out;
+}
+
 .searchbar:focus{
-    outline:none
+    border-bottom: 1px solid black;
+    transition: border 0.3s ease-in-out;
+}
+.searchbar:focus::placeholder{
+    color:rgba(0, 0, 0, 0.89);
+    transition: color 0.3s ease-in-out;
 }
