@@ -1,22 +1,25 @@
 .navbar{
-    position: absolute;
+    position: sticky;
     top:0;
     left: 0;
     right:0;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(255, 255, 255,0);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(7px);
     box-shadow: 0px 2px 15px rgb(6, 6, 6,0.1);
+    border:1px solid rgba(255, 255, 255, 0.247)
 }
 .navbar-title{
 font-weight: 300;
 color:black;
 }
+
 .navbar-links{
     /* font-weight: lighter; */
 }
+
 .navbar-navlinks{
     text-decoration:none;
     color:black;
