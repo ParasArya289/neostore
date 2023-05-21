@@ -1,0 +1,6 @@
+.searchbar{
+    min-width:15rem;
+    padding: 0.5rem;
+    border:0.5px solid black;
+    border-radius: 6px;
+}
