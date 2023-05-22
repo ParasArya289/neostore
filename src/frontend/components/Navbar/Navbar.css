@@ -36,3 +36,7 @@ position: absolute;
 top: 10;
 margin-left: 2px;
 }
+.navbar-navlinks:hover,
+.navbar-navlinks:hover .nav-badge {
+  color: grey;
+}

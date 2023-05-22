@@ -24,7 +24,9 @@ export const Navbar = () => {
       <div className="navbar-links">
 
        <NavLink className="navbar-navlinks" to="/wishlist"><BsBag /><Badge className="nav-badge">12</Badge></NavLink>
+        
         <NavLink  className="navbar-navlinks" to="/cart"><BsCart /><Badge className="nav-badge">9</Badge></NavLink>
+        
         <NavLink className="navbar-navlinks" to="/auth"><BiUser /></NavLink>
       </div>
     </nav>
