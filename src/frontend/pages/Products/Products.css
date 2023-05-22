@@ -1,0 +1,22 @@
+/* .prod-nav{
+    position: sticky;
+    top: 100px;
+}
+ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+li{
+    list-style: none;
+} */
+
+.products-container {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}

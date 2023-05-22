@@ -9,7 +9,8 @@
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(7px);
     box-shadow: 0px 2px 15px rgb(6, 6, 6,0.1);
-    border:1px solid rgba(255, 255, 255, 0.247)
+    border:1px solid rgba(255, 255, 255, 0.247);
+    z-index: 99999;
 }
 
 .navbar-title-navlink,.navbar-navlinks{

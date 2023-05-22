@@ -12,6 +12,7 @@ export const products =
     "name": "iphone x",
     "company": "apple",
     "price": 6000000,
+    "rating":5,
     "colors": [
       "#ff0000",
       "#000000",
@@ -27,6 +28,7 @@ export const products =
     "name": "samsung s20",
     "company": "samsung",
     "price": 5000000,
+    "rating":3,
     "colors": [
       "#000",
       "#22D3EF"
@@ -41,6 +43,7 @@ export const products =
     "name": "Dell Series",
     "company": "dell",
     "price": 600000,
+    "rating":2,
     "colors": [
       "#22D3EF",
       "#CDD0D0"
@@ -54,6 +57,7 @@ export const products =
     "name": "Nokia 420",
     "company": "nokia",
     "price": 12599,
+    "rating":5,
     "colors": [
       "#000",
       "#000000",
@@ -68,6 +72,7 @@ export const products =
     "id": "thapaserialnoe",
     "name": "Mac Pc",
     "company": "apple",
+    "rating":4,
     "price": 4000099,
     "colors": [
       "#000",
@@ -83,6 +88,7 @@ export const products =
     "name": "Macbook Pro",
     "company": "apple",
     "price": 42999,
+    "rating":3,
     "colors": [
       "#000000",
       "#CDD0D0"
@@ -96,6 +102,7 @@ export const products =
     "id": "thapaserialnog",
     "name": "Asus gseries",
     "company": "asus",
+    "rating":2,
     "price": 23999,
     "colors": [
       "#CDD0D0",
@@ -110,6 +117,7 @@ export const products =
     "id": "thapaserialnoh",
     "name": "Accessories",
     "price": 1099999,
+    "rating":1,
     "company": "lenova",
     "colors": [
       "#000",
@@ -125,6 +133,7 @@ export const products =
     "id": "thapaserialnoi",
     "name": "Iwatch",
     "price": 39999,
+    "rating":4,
     "company": "apple",
     "colors": [
       "#000000"
@@ -139,6 +148,7 @@ export const products =
     "name": "user need",
     "company": "apple",
     "price": 300099,
+    "rating":3,
     "colors": [
       "#ff0000",
       "#22D3EF",
@@ -153,6 +163,7 @@ export const products =
     "name": "rolex premium",
     "company": "rolex",
     "price": 999999,
+    "rating":4,
     "colors": [
       "#000000",
       "#CDD0D0"
@@ -165,6 +176,7 @@ export const products =
     "id": "thapaserialnol",
     "name": "galaxy w20",
     "price": 311999,
+    "rating":5,
     "company": "samsung",
     "colors": [
       "#22D3EF",
