@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "dayjs": "^1.11.7",
+    "framer-motion": "^10.12.12",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.47",
