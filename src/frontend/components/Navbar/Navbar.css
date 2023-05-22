@@ -28,3 +28,11 @@ color:black;
     font-size: 1.2rem;
     padding:1.5rem;
 }
+.nav-badge{
+color:black;
+font-size: 10px;
+font-weight: 500;
+position: absolute;
+top: 10;
+margin-left: 2px;
+}
