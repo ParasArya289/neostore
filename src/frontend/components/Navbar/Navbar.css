@@ -17,11 +17,14 @@ color:black;
 }
 
 .navbar-links{
-    /* font-weight: lighter; */
+    /* font-weight: lighter;
+    color:red */
+    font: 1rem;
 }
 
 .navbar-navlinks{
     text-decoration:none;
-    color:black;
-    padding:0.5rem;
+    color:rgb(43, 43, 43);
+    font-size: 1.2rem;
+    padding:1.5rem;
 }
