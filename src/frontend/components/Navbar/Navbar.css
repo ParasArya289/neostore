@@ -45,4 +45,5 @@ margin-left: 2px;
 .navbar-navlinks:hover,
 .navbar-navlinks:hover .nav-badge {
   color: grey;
+  transition: color 0.3s ease-in-out;
 }
