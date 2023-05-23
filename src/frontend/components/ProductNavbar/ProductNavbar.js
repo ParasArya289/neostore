@@ -1,11 +1,16 @@
 import "./ProductNavbar.css";
 import { TfiFilter } from "react-icons/tfi";
-export const ProductNavbar = ({ categories,handleShow }) => {
-  
+import { motion } from "framer-motion";
+export const ProductNavbar = ({ categories, handleShow }) => {
   return (
     <>
-      <nav className="prod-nav">
-        <TfiFilter className="products-nav-icon" onClick={handleShow}/>
+      <motion.nav
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="prod-nav"
+      >
+        <TfiFilter className="products-nav-icon" onClick={handleShow} />
         {categories.map(({ id, name }) => (
           <>
             <div key={id} class="vr-container">
@@ -16,7 +21,7 @@ export const ProductNavbar = ({ categories,handleShow }) => {
             </p>
           </>
         ))}
-      </nav>
+      </motion.nav>
     </>
   );
 };
