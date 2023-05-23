@@ -1,0 +1,31 @@
+.prod-nav {
+  position: sticky;
+  top: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  z-index: 99;
+}
+.vr-container {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.products-nav-item {
+  font-weight: 200;
+  font-size: small;
+}
+
+.products-nav-item-vr {
+  height: 100%;
+  border-left: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.products-nav-icon{
+    color:black
+}

@@ -13,7 +13,6 @@ import { NavLink } from "react-router-dom";
 export const ProductsCard = ({ productData }) => 
 {
     const navigate = useNavigate()
-    console.log(navigate)
   return (
     <motion.div onClick={()=>navigate('/')}
     initial={{opacity:0,y:20}}

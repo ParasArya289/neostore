@@ -1,17 +1,3 @@
-/* .prod-nav{
-    position: sticky;
-    top: 100px;
-}
-ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-}
-li{
-    list-style: none;
-} */
-
 .products-container {
   display: grid;
   justify-items: center;

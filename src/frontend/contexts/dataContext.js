@@ -4,6 +4,7 @@ export const dataContext = createContext();
 
 export const DataContext = ({ children }) => {
  const [products,setProducts] = useState([]);
+ const [categories,setCategories] = useState([]);
 
   const fetchProducts = async () => {
     try {
@@ -14,8 +15,18 @@ export const DataContext = ({ children }) => {
       console.error(e.message);
     }
   };
+  const fetchCategories = async () => {
+    try {
+      const res = await fetch("/api/categories");
+      const {categories} = await res.json();
+      setCategories(categories);
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
   useEffect(() => {
     fetchProducts();
+    fetchCategories();
   }, []);
-  return <dataContext.Provider value={{products}}>{children}</dataContext.Provider>;
+  return <dataContext.Provider value={{products,categories}}>{children}</dataContext.Provider>;
 };
