@@ -1,6 +1,8 @@
 .searchbar{
     max-width:10rem;
     padding: 0.5rem;
+    font-size: smaller;
+    font-weight: 300;
     background-color:transparent;
     border-left: none;
     border-right: none;
@@ -8,14 +10,13 @@
     border-bottom:0.5px solid rgba(0, 0, 0, 0.5);
     caret-color:black;
     outline:none;
-
 }
 
 .searchbar::placeholder{
     color:rgba(0, 0, 0, 0.5);
     font-size: smaller;
     font-weight: 300;
-    text-align: center;    
+    text-align: center;
 }
 .searchbar:hover{
     border-bottom: 1px solid black;
