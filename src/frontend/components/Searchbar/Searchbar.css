@@ -1,5 +1,5 @@
 .searchbar{
-    min-width:10rem;
+    max-width:10rem;
     padding: 0.5rem;
     background-color:rgba(255, 255, 255, 0);
     border-left: none;
@@ -15,6 +15,8 @@
 
 .searchbar::placeholder{
     color:rgba(0, 0, 0, 0.5);
+    font-size: smaller;
+    font-weight: 300;
     text-align: center;    
 }
 .searchbar:hover{

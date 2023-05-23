@@ -1,7 +1,8 @@
 .prod-nav {
   position: sticky;
-  top: 70px;
+  top:59px;
   display: flex;
+  height: 3rem;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2rem;
@@ -10,6 +11,11 @@
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   z-index: 99;
 }
+
+p{
+  margin: 0;
+}
+
 .vr-container {
   height: 30px;
   display: flex;
