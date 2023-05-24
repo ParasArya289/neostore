@@ -6,13 +6,13 @@ import { dataContext } from "../../contexts/dataContext";
 export const SideBar = ({ showSidebar, handleClose }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState({
-    state:false,
-    end:0
+    state: false,
+    end: 0,
   });
   const { categories } = useContext(dataContext);
 
-  const ratingArr = [1,2,3,4,5]
-  console.log(hover,rating)
+  const ratingArr = [1, 2, 3, 4, 5];
+  console.log(hover, rating);
   return (
     <>
       <Offcanvas className="offcanvas" show={showSidebar} onHide={handleClose}>
@@ -64,19 +64,24 @@ export const SideBar = ({ showSidebar, handleClose }) => {
               .fill(0)
               .map((_, i) =>
                 rating > i ? (
-                  <AiFillStar key={i} onClick={() => setRating(i + 1)}  onMouseLeave={() => setHover({state:false,end:0})}/>
+                  <AiFillStar
+                    key={i}
+                    style={{
+                      color:hover.state && i <= hover.end ? "grey" : "",
+                    }}
+                    onClick={() => setRating(i + 1)}
+                    onMouseEnter={() => setHover({ state: true, end: i })}
+                    onMouseLeave={() => setHover({ state: false, end: 0 })}
+                  />
                 ) : (
                   <AiOutlineStar
                     key={i}
                     style={{
-                      color:
-                       hover.state&&i<=hover.end ? "tomato" : "",
+                      color: hover.state && i <= hover.end ? "tomato" : "",
                     }}
                     onClick={() => setRating(i + 1)}
-                    onMouseEnter={() =>
-                      setHover({state:true,end:i})
-                    }
-                    onMouseLeave={() => setHover({state:false,end:0})}
+                    onMouseEnter={() => setHover({ state: true, end: i })}
+                    onMouseLeave={() => setHover({ state: false, end: 0 })}
                   />
                 )
               )}
