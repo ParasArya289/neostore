@@ -1,18 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import "./SideBar.css";
 import { Button, Offcanvas } from "react-bootstrap";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { dataContext } from "../../contexts/dataContext";
+import {dataContext } from "../../contexts/dataContext";
 export const SideBar = ({ showSidebar, handleClose }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState({
     state: false,
     end: 0,
   });
-  const { categories } = useContext(dataContext);
+  const [activeClr,setActiveClr] = useState('');
+  const {products, categories } = useContext(dataContext);
 
-  const ratingArr = [1, 2, 3, 4, 5];
-  console.log(hover, rating);
+  const uniqueColors = useMemo(()=>{
+    const colorsFiltered = products.flatMap(({colors})=>colors)
+    return [...new Set(colorsFiltered)]
+  },[])
+
   return (
     <>
       <Offcanvas className="offcanvas" show={showSidebar} onHide={handleClose}>
@@ -56,13 +60,27 @@ export const SideBar = ({ showSidebar, handleClose }) => {
             </div>
           ))}
           <div className="filter-header">
+            <h1>Colors</h1>
+            <p>Clear</p>
+          </div>
+          {
+            uniqueColors.map((hex=>(
+              <div
+            className="prodcard-clr"
+            style={{ backgroundColor: hex, width: "20px", height: "20px",border:activeClr===hex?"2px solid teal":"0 solid black",
+            outlineOffset:'2px'
+          
+          }}
+            onClick={()=>setActiveClr(hex)}
+          ></div>
+            )))
+          }
+          <div className="filter-header">
             <h1>Rating</h1>
             <p>Clear</p>
           </div>
           <div>
-            {Array(5)
-              .fill(0)
-              .map((_, i) =>
+            {[1, 2, 3, 4, 5].map((_, i) =>
                 rating > i ? (
                   <AiFillStar
                     key={i}
