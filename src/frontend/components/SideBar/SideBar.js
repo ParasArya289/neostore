@@ -14,21 +14,40 @@ export const SideBar = ({ showSidebar, handleClose }) => {
         </Offcanvas.Header>
 
         <Offcanvas.Body>
-          <label>
-            Price
-            <input type="range" min="0" max="150000" />
-          </label>
-          <label>
-            Category
+          <div className="filter-header">
+            <h1>Price</h1>
+            <p>Clear</p>
+          </div>
+           <p>₹ 10000</p>
+            <input className="filter-range" type="range" min="0" max="150000" step={"10000"}/>
+            <div className="filter-header">
+            <h1>Sort</h1>
+            <p>Clear</p>
+          </div>
+          <div className="filter-section">
+          <label>High To Low</label>
+            <input type="radio" name="sort-group" />
+          </div>
+          <div className="filter-section">
+          <label>Low To High</label>
+            <input type="radio" name="sort-group" />
+          </div>
+            <div className="filter-header">
+            <h1>Category</h1>
+            <p>Clear</p>
+          </div>
             {categories.map(({ id, name }) => (
+              <div className="filter-section">
               <label key={id}>
-                <input type="checkbox" />
                 {name}
               </label>
+                <input type="checkbox" />
+              </div>
             ))}
-          </label>
-          <label>
-            Rating
+          <div className="filter-header">
+            <h1>Rating</h1>
+            <p>Clear</p>
+          </div>
             <div>
               {Array(5)
                 .fill(0)
@@ -36,7 +55,6 @@ export const SideBar = ({ showSidebar, handleClose }) => {
                   rating > i ? <AiFillStar key={i} onClick={()=>setRating(i+1)}/> : <AiOutlineStar key={i} onClick={()=>setRating(i+1)}/>
                 )}
             </div>
-          </label>
           <Button className="Button" variant="dark">
             Clear Filter
           </Button>
