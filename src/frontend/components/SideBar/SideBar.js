@@ -7,7 +7,7 @@ import { createSearchParams, useSearchParams } from "react-router-dom";
 import { uniqueColors } from "../../utils/unqiueColors";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-let initState = {
+export let initState = {
   category: [],
   sort: [],
   rating: [],
