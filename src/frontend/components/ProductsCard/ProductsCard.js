@@ -7,7 +7,6 @@ import { products } from "../../../backend/db/products";
 import {Navigate, useNavigate} from 'react-router-dom';
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
 // id,name,price,rating,colors,image,description,category
 
 export const ProductsCard = ({ productData }) => 
@@ -17,15 +16,14 @@ export const ProductsCard = ({ productData }) =>
     <motion.div onClick={()=>navigate('/')}
     initial={{opacity:0,y:60}}
     animate={{opacity:1,y:0}}
-    exit={{ opacity: 0 }}
-      transition={{
-        opacity: { ease: "linear" },
-        duration:0.5,
-        delay:0.2,
-        layout: { duration: 0.2 }
-      }}
-      layout
-
+    exit={{ opacity: 0 ,y:-60}}
+    transition={{
+      opacity: { ease: "linear" },
+      duration:0.5,
+      delay:0.2,
+      layout: { duration: 0.4 }
+    }}
+    layout
     className="prodcard-container">
       <img
         className="prodcard-image"

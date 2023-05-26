@@ -30,18 +30,9 @@ export const Products = () => {
   return (
     <>
       <ProductNavbar categories={categories} handleShow={handleShow} />
-      <AnimatePresence>
+      <AnimatePresence mode={"wait"}>
         {/* <motion.h1>Showing all products</motion.h1> */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            opacity: { ease: "linear" },
-            duration: 1,
-            delay: 0.3,
-            layout: { duration: 0.3 },
-          }}
           layout
           className="products-container"
         >
