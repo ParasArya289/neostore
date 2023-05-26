@@ -15,13 +15,13 @@ export const ProductsCard = ({ productData }) =>
     const navigate = useNavigate()
   return (
     <motion.div onClick={()=>navigate('/')}
-    initial={{opacity:0,y:20}}
+    initial={{opacity:0,y:60}}
     animate={{opacity:1,y:0}}
     exit={{ opacity: 0 }}
       transition={{
         opacity: { ease: "linear" },
-        duration:0.2,
-        delay:0.1,
+        duration:0.5,
+        delay:0.2,
         layout: { duration: 0.2 }
       }}
       layout

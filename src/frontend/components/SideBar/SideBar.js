@@ -11,6 +11,7 @@ export let initState = {
   category: [],
   sort: [],
   rating: [],
+  color:[],
   price:[]
 };
 export const SideBar = ({ showSidebar, handleClose }) => {
