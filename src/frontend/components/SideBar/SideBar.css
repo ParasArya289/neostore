@@ -1,5 +1,6 @@
 .offcanvas{
     z-index: 99999;
+    max-width: 300px;
 }
 .Button{
     margin-top: 20px;
