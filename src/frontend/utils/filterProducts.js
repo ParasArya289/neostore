@@ -13,7 +13,7 @@ let tempArray = array;
     tempArray = tempArray.filter(({category})=>catg.includes(category))
   }
   if(sort.length){
-    tempArray= tempArray.sort((a,b)=>sort[0]==='LTH'?a.price-b.price:b.price-a.price)
+    tempArray= [...tempArray].sort((a,b)=>sort[0]==='LTH'?a.price-b.price:b.price-a.price)
   }
   if(rat.length){
     tempArray = tempArray.filter(({rating})=>rating<=rat[0])

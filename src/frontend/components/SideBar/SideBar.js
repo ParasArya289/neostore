@@ -113,6 +113,16 @@ export const SideBar = ({ showSidebar, handleClose }) => {
     initState = { ...initState, rating: [] };
     setSearchParams(createSearchParams(initState));
   };
+  const clearAllParams = () => {
+    initState = {
+      category: [],
+      sort: [],
+      rating: [],
+      color:[],
+      price:"150000"
+    };
+    setSearchParams(createSearchParams(initState));
+  }
   return (
     <>
       <Offcanvas className="offcanvas" show={showSidebar} onHide={handleClose}>
@@ -232,7 +242,7 @@ export const SideBar = ({ showSidebar, handleClose }) => {
               )
             )}
           </div>
-          <Button className="Button" variant="dark">
+          <Button className="Button" variant="dark" onClick={clearAllParams}>
             Clear Filter
           </Button>
         </Offcanvas.Body>
