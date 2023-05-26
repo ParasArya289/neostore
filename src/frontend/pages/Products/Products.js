@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useContext, useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import { ProductNavbar } from "../../components/ProductNavbar/ProductNavbar";
 import { ProductsCard } from "../../components/ProductsCard/ProductsCard";
 import { initState, SideBar } from "../../components/SideBar/SideBar";
@@ -10,35 +11,21 @@ import "./Products.css";
 
 export const Products = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [searchParams,setSearchParams] = useSearchParams();
   const { products, categories } = useContext(dataContext);
-
+  const params = {
+     category: searchParams.getAll("category"),
+     sort: searchParams.getAll("sort"),
+     rating: searchParams.getAll("rating"),
+     color: searchParams.getAll("color"),
+     price: searchParams.get("price")?searchParams.get("price"):"150000",
+   };
+   const filteredProducts = filterProductsOnParams(params,products)
+   
   const handleClose = () => setShowSidebar(false);
   const handleShow = () => setShowSidebar(true);
 
-  // const filteredProducts = filterProductsOnParams(initState,products)
-  const filterProductsOnParams = (state, array) => {
-    let tempArray = array;
-  const { category:catg, sort, rating:rat, color:clr, price:prc } = state;
-  console.log({state, array})
 
-  if(catg.length){
-    tempArray = tempArray.filter(({category})=>catg.includes(category))
-  }
-  if(sort.length){
-    tempArray= tempArray.sort((a,b)=>sort[0]==='LTH'?a.price-b.price:b.price-a.price)
-  }
-  if(rat.length){
-    tempArray = tempArray.filter(({rating})=>rating<=rat[0])
-  }
-  if(clr.length){
-    tempArray = tempArray.filter(({color})=>color === clr[0]);
-  }
-  if(prc){
-    tempArray = tempArray.filter(({price})=>price <= prc);
-  }
-  return tempArray;
-};
-  console.log(filterProductsOnParams(initState,products))
 
   return (
     <>
@@ -59,7 +46,7 @@ export const Products = () => {
           className="products-container"
         >
           <SideBar showSidebar={showSidebar} handleClose={handleClose} />
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductsCard key={product.name} productData={product} />
           ))}
         </motion.div>

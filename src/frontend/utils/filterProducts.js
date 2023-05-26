@@ -19,10 +19,10 @@ let tempArray = array;
     tempArray = tempArray.filter(({rating})=>rating<=rat[0])
   }
   if(clr.length){
-    tempArray = tempArray.filter(({color})=>color === clr[0]);
+    tempArray = tempArray.filter(({colors})=>colors.includes(clr[0]));
   }
-  if(prc.length){
-    tempArray = tempArray.filter(({price})=>price <= prc[0]);
+  if(prc){
+    tempArray = tempArray.filter(({price})=>price <= prc);
   }
   return tempArray;
 };

@@ -11,7 +11,7 @@ export const products =
     "id": "thapaserialnoa",
     "name": "iphone x",
     "company": "apple",
-    "price": 6000000,
+    "price": 78000,
     "rating":5,
     "colors": [
       "#ff0000",
@@ -27,7 +27,7 @@ export const products =
     "id": "thapaserialnob",
     "name": "samsung s20",
     "company": "samsung",
-    "price": 5000000,
+    "price": 55000,
     "rating":3,
     "colors": [
       "#000",
@@ -42,7 +42,7 @@ export const products =
     "id": "thapaserialnoc",
     "name": "Dell Series",
     "company": "dell",
-    "price": 600000,
+    "price": 60000,
     "rating":2,
     "colors": [
       "#22D3EF",
@@ -73,7 +73,7 @@ export const products =
     "name": "Mac Pc",
     "company": "apple",
     "rating":4,
-    "price": 4000099,
+    "price": 120000,
     "colors": [
       "#000",
       "#CDD0D0"
@@ -87,7 +87,7 @@ export const products =
     "id": "thapaserialnof",
     "name": "Macbook Pro",
     "company": "apple",
-    "price": 42999,
+    "price": 120000,
     "rating":3,
     "colors": [
       "#000000",
@@ -116,7 +116,7 @@ export const products =
   {
     "id": "thapaserialnoh",
     "name": "Accessories",
-    "price": 1099999,
+    "price": 45000,
     "rating":1,
     "company": "lenova",
     "colors": [
@@ -147,7 +147,7 @@ export const products =
     "id": "thapaserialnoj",
     "name": "user need",
     "company": "apple",
-    "price": 300099,
+    "price": 149999,
     "rating":3,
     "colors": [
       "#ff0000",
@@ -162,7 +162,7 @@ export const products =
     "id": "thapaserialnok",
     "name": "rolex premium",
     "company": "rolex",
-    "price": 999999,
+    "price": 99999,
     "rating":4,
     "colors": [
       "#000000",
@@ -175,7 +175,7 @@ export const products =
   {
     "id": "thapaserialnol",
     "name": "galaxy w20",
-    "price": 311999,
+    "price": 31999,
     "rating":5,
     "company": "samsung",
     "colors": [
