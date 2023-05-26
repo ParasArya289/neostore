@@ -5,6 +5,7 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { dataContext } from "../../contexts/dataContext";
 import { createSearchParams, useSearchParams } from "react-router-dom";
 import { uniqueColors } from "../../utils/unqiueColors";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 let initState = {
   category: [],
@@ -22,6 +23,7 @@ export const SideBar = ({ showSidebar, handleClose }) => {
 
   const colors = uniqueColors(products);
 
+  const formatedPrice = formatCurrency(`${searchParams.get("price") || 0}`,"INR")
   /**
    * on hard refresh if params are available, then set those params
    * @searchParams is present in url, then get all of the params,
@@ -122,7 +124,7 @@ export const SideBar = ({ showSidebar, handleClose }) => {
             <h1>Price</h1>
             <p onClick={clearPriceParams}>Clear</p>
           </div>
-          <p>₹ {searchParams.get("price") || 0}</p>
+          <p>{formatedPrice}</p>
           <input
             className="filter-range"
             type="range"
