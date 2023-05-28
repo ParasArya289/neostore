@@ -1,6 +1,8 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { authContext } from "../../../contexts/authContext";
 
 export const Signin = () => {
+    const {token,user,singupHandler} = useContext(authContext);
   const formRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
@@ -14,7 +16,8 @@ export const Signin = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-    console.log(obj);
+    singupHandler(obj)
+    alert(user.firstName)
   };
   return (
     <>

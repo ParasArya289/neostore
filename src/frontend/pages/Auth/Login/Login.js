@@ -15,7 +15,7 @@ export const Login = () => {
       obj[key] = value;
     }
     loginHandler(obj)
-    alert(user.firstName+token)
+    alert(user.firstName)
     
   };
   return (
