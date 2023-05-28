@@ -15,7 +15,6 @@ export const Login = () => {
       obj[key] = value;
     }
     loginHandler(obj)
-    
   };
   return (
     <>
@@ -28,7 +27,7 @@ export const Login = () => {
           name="password"
           placeholder="password"
         />
-        <button type="submit" disabled={authLoading}>Create Account</button>
+        <button type="submit" disabled={authLoading}>Login</button>
       </form>
     </>
   );
