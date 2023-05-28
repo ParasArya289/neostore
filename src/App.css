@@ -23,6 +23,8 @@ body{
 
 .App {
   text-align: center;
+  height: 100vh;
+  /* background-color: blue; */
 }
 
 .App-logo {

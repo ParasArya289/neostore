@@ -1,8 +1,9 @@
 import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
+import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 
 export const Signin = () => {
-    const {token,user,singupHandler,authLoading} = useContext(authContext);
+  const { token, user, singupHandler, authLoading } = useContext(authContext);
   const formRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
@@ -16,19 +17,19 @@ export const Signin = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-    singupHandler(obj)
-};
+    singupHandler(obj);
+  };
 
-const createTestAccount = () =>{
-    firstNameRef.current.value="Test";
-    lastNameRef.current.value="Test";
-    emailRef.current.value="test@gmail.com";
-    passwordRef.current.value="test";
-  }
+  const createTestAccount = () => {
+    firstNameRef.current.value = "Test";
+    lastNameRef.current.value = "Test";
+    emailRef.current.value = "test@gmail.com";
+    passwordRef.current.value = "test";
+  };
   return (
     <>
-      <h1>Signin</h1>
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <h1 className="auth-heading">SignUp</h1>
+      <form className="auth-form" ref={formRef} onSubmit={handleSubmit}>
         <input
           ref={firstNameRef}
           type="text"
@@ -48,9 +49,29 @@ const createTestAccount = () =>{
           name="password"
           placeholder="password"
         />
-        <button type="submit" disabled={authLoading}>Create Account</button>
+        <Dropdown className="auth-dropdown" as={ButtonGroup}>
+          <Button
+            className="auth-btn"
+            type="submit"
+            disabled={authLoading}
+            variant="secondary"
+          >
+            Create Account
+          </Button>
+
+          <Dropdown.Toggle
+            disabled={authLoading}
+            split
+            variant="secondary"
+            id="dropdown-split-basic"
+          />
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={createTestAccount}>
+              Fill With Test Data
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </form>
-        <button disabled={authLoading} onClick={createTestAccount}>Fill with test data</button>
     </>
   );
 };

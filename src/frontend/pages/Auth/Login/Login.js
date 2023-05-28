@@ -1,8 +1,11 @@
+import "./Login.css";
+
 import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
+import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 
 export const Login = () => {
- const {token,loginHandler,user,authLoading} = useContext(authContext)
+  const { token, loginHandler, user, authLoading } = useContext(authContext);
   const formRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -14,16 +17,16 @@ export const Login = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-    loginHandler(obj)
+    loginHandler(obj);
   };
-  const createTestAccount = () =>{
-    emailRef.current.value="parasarya289@gmail.com";
-    passwordRef.current.value="parasarya";
-  }
+  const createTestAccount = () => {
+    emailRef.current.value = "parasarya289@gmail.com";
+    passwordRef.current.value = "parasarya";
+  };
   return (
     <>
-      <h1>Login</h1>
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <h1 className="auth-heading">LogIn</h1>
+      <form ref={formRef} className="auth-form" onSubmit={handleSubmit}>
         <input ref={emailRef} type="email" name="email" placeholder="Email" />
         <input
           ref={passwordRef}
@@ -31,8 +34,23 @@ export const Login = () => {
           name="password"
           placeholder="password"
         />
-        <button type="submit" disabled={authLoading}>Login</button>
-        <button type="submit" disabled={authLoading}onClick={createTestAccount}>Test Login</button>
+        <Dropdown className="auth-dropdown" as={ButtonGroup}>
+          <Button className="auth-btn" type="submit" disabled={authLoading} variant="secondary">
+            Login
+          </Button>
+
+          <Dropdown.Toggle
+            disabled={authLoading}
+            split
+            variant="secondary"
+            id="dropdown-split-basic"
+          />
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={createTestAccount}>
+              Test login
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </form>
     </>
   );
