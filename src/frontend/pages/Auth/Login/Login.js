@@ -3,6 +3,7 @@ import "./Login.css";
 import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
+import{motion} from 'framer-motion';
 
 export const Login = () => {
   const { token, loginHandler, user, authLoading } = useContext(authContext);
@@ -24,7 +25,7 @@ export const Login = () => {
     passwordRef.current.value = "parasarya";
   };
   return (
-    <>
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:0.1}}>
       <h1 className="auth-heading">LogIn</h1>
       <form ref={formRef} className="auth-form" onSubmit={handleSubmit}>
         <input ref={emailRef} type="email" name="email" placeholder="Email" />
@@ -52,6 +53,6 @@ export const Login = () => {
           </Dropdown.Menu>
         </Dropdown>
       </form>
-    </>
+    </motion.div>
   );
 };
