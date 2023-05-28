@@ -16,6 +16,10 @@ export const Login = () => {
     }
     loginHandler(obj)
   };
+  const createTestAccount = () =>{
+    emailRef.current.value="parasarya289@gmail.com";
+    passwordRef.current.value="parasarya";
+  }
   return (
     <>
       <h1>Login</h1>
@@ -28,6 +32,7 @@ export const Login = () => {
           placeholder="password"
         />
         <button type="submit" disabled={authLoading}>Login</button>
+        <button type="submit" disabled={authLoading}onClick={createTestAccount}>Test Login</button>
       </form>
     </>
   );
