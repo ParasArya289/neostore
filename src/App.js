@@ -7,6 +7,8 @@ import{Cart} from '../src/frontend/pages/Cart/Cart'
 import{Wishlist} from '../src/frontend/pages/Wishlist/Wishlist'
 import { Route, Routes } from "react-router-dom";
 import { Auth } from "./frontend/pages/Auth/Auth";
+import { UserProfile } from "./frontend/pages/UserProfile/UserProfile";
+import { PrivateRoute } from "./frontend/components/PrivatRoute/PrivateRoute";
 
 function App() {
   return (
@@ -20,6 +22,12 @@ function App() {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/wishlist" element={<Wishlist/>}/>
         <Route path="/auth" element={<Auth/>}/>
+
+        <Route path="/user" element={
+          <PrivateRoute>
+            <UserProfile/>
+          </PrivateRoute>
+        }/>
       </Routes>
     </div>
   );

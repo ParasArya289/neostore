@@ -7,10 +7,12 @@ import { BsBag } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { Badge } from "react-bootstrap";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { authContext } from "../../contexts/authContext";
 
 export const Navbar = () => {
   const [test, setTest] = useState(0);
+  const {token} = useContext(authContext)
   const activeNavStyle = ({ isActive }) => {
     return {
       color: isActive ? "grey" : "",
@@ -71,7 +73,7 @@ export const Navbar = () => {
           <NavLink
             style={activeNavStyle}
             className="navbar-navlinks"
-            to="/auth"
+            to={token?"/user":"/auth"}
           >
             <BiUser />
           </NavLink>
