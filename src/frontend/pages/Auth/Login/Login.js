@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
 
 export const Login = () => {
- const {token,loginHandler,user} = useContext(authContext)
+ const {token,loginHandler,user,authLoading} = useContext(authContext)
   const formRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -15,7 +15,6 @@ export const Login = () => {
       obj[key] = value;
     }
     loginHandler(obj)
-    alert(user.firstName)
     
   };
   return (
@@ -29,7 +28,7 @@ export const Login = () => {
           name="password"
           placeholder="password"
         />
-        <button type="submit">Create Account</button>
+        <button type="submit" disabled={authLoading}>Create Account</button>
       </form>
     </>
   );

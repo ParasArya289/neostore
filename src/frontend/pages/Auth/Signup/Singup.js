@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
 
 export const Signin = () => {
-    const {token,user,singupHandler} = useContext(authContext);
+    const {token,user,singupHandler,authLoading} = useContext(authContext);
   const formRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
@@ -17,8 +17,7 @@ export const Signin = () => {
       obj[key] = value;
     }
     singupHandler(obj)
-    alert(user.firstName)
-  };
+};
   return (
     <>
       <h1>Signin</h1>
@@ -42,7 +41,7 @@ export const Signin = () => {
           name="password"
           placeholder="password"
         />
-        <button type="submit">Create Account</button>
+        <button type="submit" disabled={authLoading}>Create Account</button>
       </form>
     </>
   );
