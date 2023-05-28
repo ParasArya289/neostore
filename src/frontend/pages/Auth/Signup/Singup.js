@@ -18,6 +18,13 @@ export const Signin = () => {
     }
     singupHandler(obj)
 };
+
+const createTestAccount = () =>{
+    firstNameRef.current.value="Test";
+    lastNameRef.current.value="Test";
+    emailRef.current.value="test@gmail.com";
+    passwordRef.current.value="test";
+  }
   return (
     <>
       <h1>Signin</h1>
@@ -43,6 +50,7 @@ export const Signin = () => {
         />
         <button type="submit" disabled={authLoading}>Create Account</button>
       </form>
+        <button disabled={authLoading} onClick={createTestAccount}>Fill with test data</button>
     </>
   );
 };
