@@ -37,7 +37,10 @@ export const Products = () => {
         >
           Showing all{" "}
           <motion.span>
-            {!params.category.length ? "products" : capitalizer(params.category)}
+            {!params.category.length
+              ? "Products"
+              : capitalizer(params.category)}
+            ({filteredProducts.length})
           </motion.span>
         </motion.p>
         <motion.div layout className="products-container">
