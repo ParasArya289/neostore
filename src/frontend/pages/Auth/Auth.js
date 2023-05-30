@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import { Login } from "./Login/Login";
 import { Signin } from "./Signup/Singup";
@@ -12,13 +12,18 @@ export const Auth = () => {
   const { token } = useContext(authContext);
   const [ref, { height }] = useMeasure();
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location?.state?.from)
   useEffect(() => {
-    navigate(token ? "/products" : "/auth");
+    if (token) {
+      const navi = (location?.state?.from === "/user" && "/products")||(location?.state?.from ?? "/products" )
+      navigate(navi);
+    }
   }, [token]);
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0, height:height+70 }}
+      animate={{ opacity: 1, y: 0, height: height + 70 }}
       transition={{ duration: 0.4, delay: 0 }}
       className="auth-container"
     >

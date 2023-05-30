@@ -3,7 +3,7 @@ import "./Login.css";
 import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
-import{motion} from 'framer-motion';
+import { motion } from "framer-motion";
 
 export const Login = () => {
   const { token, loginHandler, user, authLoading } = useContext(authContext);
@@ -25,7 +25,11 @@ export const Login = () => {
     passwordRef.current.value = "parasarya";
   };
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:0.1}}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.1 }}
+    >
       <h1 className="auth-heading">LogIn</h1>
       <form ref={formRef} className="auth-form" onSubmit={handleSubmit}>
         <input ref={emailRef} type="email" name="email" placeholder="Email" />
@@ -36,7 +40,12 @@ export const Login = () => {
           placeholder="password"
         />
         <Dropdown className="auth-dropdown" as={ButtonGroup}>
-          <Button className="auth-btn" type="submit" disabled={authLoading} variant="secondary">
+          <Button
+            className="auth-btn"
+            type="submit"
+            disabled={authLoading}
+            variant="secondary"
+          >
             Login
           </Button>
 
@@ -47,7 +56,12 @@ export const Login = () => {
             id="dropdown-split-basic"
           />
           <Dropdown.Menu>
-            <Dropdown.Item onClick={createTestAccount}>
+            <Dropdown.Item
+              onClick={(e) => {
+                createTestAccount();
+                handleSubmit(e);
+              }}
+            >
               Test login
             </Dropdown.Item>
           </Dropdown.Menu>
