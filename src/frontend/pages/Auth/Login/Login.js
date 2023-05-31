@@ -4,6 +4,7 @@ import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { toast } from "react-hot-toast";
 
 export const Login = () => {
   const { token, loginHandler, user, authLoading } = useContext(authContext);
@@ -18,7 +19,6 @@ export const Login = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-    loginHandler(obj);
   };
   const createTestAccount = () => {
     emailRef.current.value = "parasarya289@gmail.com";

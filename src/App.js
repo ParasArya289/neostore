@@ -9,12 +9,18 @@ import { Route, Routes } from "react-router-dom";
 import { Auth } from "./frontend/pages/Auth/Auth";
 import { UserProfile } from "./frontend/pages/UserProfile/UserProfile";
 import { PrivateRoute } from "./frontend/components/PrivatRoute/PrivateRoute";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="App">
       {/* <Mockman/> */}
       <Navbar />
+      <Toaster position="top-right" reverseOrder={false} toastOptions={{
+          style: {
+            marginTop:"60px"
+          },
+        }}/>
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />
