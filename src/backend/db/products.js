@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = 
 [
   {
-    "id": "thapaserialnoa",
+    "_id": "thapaserialnoa",
     "name": "iphone x",
     "company": "apple",
     "price": 78000,
@@ -24,7 +24,7 @@ export const products =
     "featured": true
   },
   {
-    "id": "thapaserialnob",
+    "_id": "thapaserialnob",
     "name": "samsung s20",
     "company": "samsung",
     "price": 55000,
@@ -39,7 +39,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnoc",
+    "_id": "thapaserialnoc",
     "name": "Dell Series",
     "company": "dell",
     "price": 60000,
@@ -53,7 +53,7 @@ export const products =
     "category": "laptop"
   },
   {
-    "id": "thapaserialnod",
+    "_id": "thapaserialnod",
     "name": "Nokia 420",
     "company": "nokia",
     "price": 12599,
@@ -69,7 +69,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnoe",
+    "_id": "thapaserialnoe",
     "name": "Mac Pc",
     "company": "apple",
     "rating":4,
@@ -84,7 +84,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnof",
+    "_id": "thapaserialnof",
     "name": "Macbook Pro",
     "company": "apple",
     "price": 120000,
@@ -99,7 +99,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnog",
+    "_id": "thapaserialnog",
     "name": "Asus gseries",
     "company": "asus",
     "rating":2,
@@ -114,7 +114,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnoh",
+    "_id": "thapaserialnoh",
     "name": "Accessories",
     "price": 45000,
     "rating":1,
@@ -130,7 +130,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnoi",
+    "_id": "thapaserialnoi",
     "name": "Iwatch",
     "price": 39999,
     "rating":4,
@@ -144,7 +144,7 @@ export const products =
     "shipping": true
   },
   {
-    "id": "thapaserialnoj",
+    "_id": "thapaserialnoj",
     "name": "user need",
     "company": "apple",
     "price": 149999,
@@ -159,7 +159,7 @@ export const products =
     "category": "accessories"
   },
   {
-    "id": "thapaserialnok",
+    "_id": "thapaserialnok",
     "name": "rolex premium",
     "company": "rolex",
     "price": 99999,
@@ -173,7 +173,7 @@ export const products =
     "category": "watch"
   },
   {
-    "id": "thapaserialnol",
+    "_id": "thapaserialnol",
     "name": "galaxy w20",
     "price": 31999,
     "rating":5,

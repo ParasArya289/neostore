@@ -19,7 +19,9 @@ export const Login = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-  };
+    loginHandler(obj)
+};
+console.log(token)
   const createTestAccount = () => {
     emailRef.current.value = "parasarya289@gmail.com";
     passwordRef.current.value = "parasarya";
