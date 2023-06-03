@@ -8,11 +8,13 @@ import { BiUser } from "react-icons/bi";
 import { Badge } from "react-bootstrap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useState } from "react";
-import { authContext } from "../../contexts/authContext";
+import { authContext, useAuth } from "../../contexts/authContext";
+import { useData } from "../../contexts/dataContext";
 
 export const Navbar = () => {
   const [test, setTest] = useState(0);
-  const {token} = useContext(authContext)
+  const { token } = useAuth();
+  const{dataState:{wishlist,cart}} = useData();
   const activeNavStyle = ({ isActive }) => {
     return {
       color: isActive ? "grey" : "",
@@ -43,13 +45,13 @@ export const Navbar = () => {
           >
             <BsBag />
             <motion.Badge
-              key={test}
+              key={wishlist.length}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="nav-badge"
             >
-              {test}
+              {wishlist.length}
             </motion.Badge>
           </NavLink>
 
@@ -60,20 +62,20 @@ export const Navbar = () => {
           >
             <BsCart />
             <motion.Badge
-              key={test}
+              key={cart.length}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="nav-badge"
             >
-              {test}
+              {cart.length}
             </motion.Badge>
           </NavLink>
 
           <NavLink
             style={activeNavStyle}
             className="navbar-navlinks"
-            to={token?"/user":"/auth"}
+            to={token ? "/user" : "/auth"}
           >
             <BiUser />
           </NavLink>
