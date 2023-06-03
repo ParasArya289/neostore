@@ -18,7 +18,7 @@ function App() {
       <Navbar />
       <Toaster position="top-right" reverseOrder={false} toastOptions={{
         style: {
-          marginTop:"60px"
+          marginTop:"95px"
         },
         }}
         />
