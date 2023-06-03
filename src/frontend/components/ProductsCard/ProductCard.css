@@ -59,8 +59,12 @@
 
 .prodcard-icon {
   color: white;
+  cursor: pointer;
 }
 .prodcard-container:hover {
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
+}
+.prodcard-button{
+  width: 100%;
 }

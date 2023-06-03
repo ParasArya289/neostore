@@ -1,8 +1,8 @@
-import { useContext, useEffect,useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./SideBar.css";
 import { Button, Offcanvas } from "react-bootstrap";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { dataContext } from "../../contexts/dataContext";
+import { dataContext, useData } from "../../contexts/dataContext";
 import { createSearchParams, useSearchParams } from "react-router-dom";
 import { uniqueColors } from "../../utils/unqiueColors";
 import { formatCurrency } from "../../utils/formatCurrency";
@@ -11,20 +11,27 @@ export let initState = {
   category: [],
   sort: [],
   rating: [],
-  color:[],
-  price:[]
+  color: [],
+  price: [],
 };
 export const SideBar = ({ showSidebar, handleClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [hover, setHover] = useState({
     state: false,
     end: 0,
   });
-  const { products, categories } = useContext(dataContext);
+
+  const {
+    dataState: { products, categories },
+  } = useData();
 
   const colors = uniqueColors(products);
 
-  const formatedPrice = formatCurrency(`${searchParams.get("price") || 0}`,"INR")
+  const formatedPrice = formatCurrency(
+    `${searchParams.get("price") || 0}`,
+    "INR"
+  );
   /**
    * on hard refresh if params are available, then set those params
    * @searchParams is present in url, then get all of the params,
@@ -37,16 +44,16 @@ export const SideBar = ({ showSidebar, handleClose }) => {
       sort: searchParams.getAll("sort"),
       rating: searchParams.getAll("rating"),
       color: searchParams.getAll("color"),
-      price: searchParams.get("price")?searchParams.get("price"):"150000",
+      price: searchParams.get("price") ? searchParams.get("price") : "150000",
     };
-    updatePriceParams(initState.price)
+    updatePriceParams(initState.price);
   }, []);
 
   //functions to update individual filter params
   const updatePriceParams = (price) => {
     initState = {
       ...initState,
-      price
+      price,
     };
     setSearchParams((p) => createSearchParams(initState));
   };
@@ -118,11 +125,11 @@ export const SideBar = ({ showSidebar, handleClose }) => {
       category: [],
       sort: [],
       rating: [],
-      color:[],
-      price:"150000"
+      color: [],
+      price: "150000",
     };
     setSearchParams(createSearchParams(initState));
-  }
+  };
   return (
     <>
       <Offcanvas className="offcanvas" show={showSidebar} onHide={handleClose}>
@@ -143,7 +150,7 @@ export const SideBar = ({ showSidebar, handleClose }) => {
             max="150000"
             step={"5000"}
             value={searchParams.get("price") || 0}
-            onChange={(e)=>updatePriceParams(e.target.value)}
+            onChange={(e) => updatePriceParams(e.target.value)}
           />
           <div className="filter-header">
             <h1>Sort</h1>

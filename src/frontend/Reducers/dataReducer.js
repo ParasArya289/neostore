@@ -1,6 +1,4 @@
-import { products } from "../../backend/db/products";
-
-const initDataState = {
+export const initDataState = {
   products: [],
   categories: [],
   wishlist: [],
@@ -14,7 +12,7 @@ const initDataState = {
   isCategoriesLoading: false,
 };
 
-const dataReducer = (state, action) => {
+export const dataReducer = (state, action) => {
   switch (action.type) {
     case "INIT_PRODUCTS":
       return {
@@ -62,7 +60,7 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         wishlist: [
-          ...wishlist,
+          ...state.wishlist,
           state.cart.find(({ id }) => id === action.payload),
         ],
         cart: state.cart.filter(({ id }) => id !== action.payload),
@@ -80,7 +78,10 @@ const dataReducer = (state, action) => {
     case "MOVE_TO_CART":
       return {
         ...state,
-        cart: [...cart, state.cart.find(({ id }) => id === action.payload)],
+        cart: [
+          ...state.cart,
+          state.cart.find(({ id }) => id === action.payload),
+        ],
         wishlist: state.wishlist.filter(({ id }) => id !== action.payload),
       };
   }

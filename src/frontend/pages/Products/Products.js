@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { ProductNavbar } from "../../components/ProductNavbar/ProductNavbar";
 import { ProductsCard } from "../../components/ProductsCard/ProductsCard";
 import { initState, SideBar } from "../../components/SideBar/SideBar";
-import { dataContext } from "../../contexts/dataContext";
+import { dataContext, useData } from "../../contexts/dataContext";
 import { capitalizer } from "../../utils/capitalizerFunction";
 import { filterProductsOnParams } from "../../utils/filterProducts";
 import "./Products.css";
@@ -13,7 +13,11 @@ import "./Products.css";
 export const Products = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { products, categories } = useContext(dataContext);
+
+  const {
+    dataState: { products, categories },
+  } = useData();
+
   const params = {
     category: searchParams.getAll("category"),
     sort: searchParams.getAll("sort"),
@@ -21,6 +25,7 @@ export const Products = () => {
     color: searchParams.getAll("color"),
     price: searchParams.get("price") ? searchParams.get("price") : "150000",
   };
+  
   const filteredProducts = filterProductsOnParams(params, products);
 
   const handleClose = () => setShowSidebar(false);
