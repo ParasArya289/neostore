@@ -17,6 +17,7 @@ import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-hot-toast";
 import { useData } from "../../contexts/dataContext";
 import { checkIncludes } from "../../utils/checkIncludes";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 // id,name,price,rating,colors,image,description,category
 
@@ -93,7 +94,7 @@ export const ProductsCard = ({ productData }) => {
         <div className="prodcard-infoholder">
           <p className="prodcard-name">{productData?.name}</p>
 
-          <p>{productData.price}</p>
+          <p>{formatCurrency(productData.price,"INR")}</p>
           {productData?.colors.map((clr) => (
             <div
               className="prodcard-clr"
