@@ -15,7 +15,7 @@ export const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const {
-    dataState: { products, categories },
+    dataState,
   } = useData();
 
   const params = {
@@ -26,14 +26,14 @@ export const Products = () => {
     price: searchParams.get("price") ? searchParams.get("price") : "150000",
   };
   
-  const filteredProducts = filterProductsOnParams(params, products);
+  const filteredProducts = filterProductsOnParams(params, dataState?.products);
 
   const handleClose = () => setShowSidebar(false);
   const handleShow = () => setShowSidebar(true);
 
   return (
     <>
-      <ProductNavbar categories={categories} handleShow={handleShow} />
+      <ProductNavbar categories={dataState?.categories} handleShow={handleShow} />
       <AnimatePresence>
         <motion.p
           initial={{ opacity: 0 }}

@@ -15,16 +15,26 @@ import {
 } from "../../../HelperFunctions/CartDataHelpers";
 import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-hot-toast";
+import { useData } from "../../contexts/dataContext";
+import { checkIncludes } from "../../utils/checkIncludes";
+
 // id,name,price,rating,colors,image,description,category
 
 export const ProductsCard = ({ productData }) => {
   const { token } = useAuth();
+  const {
+    dataState: { wishlist, cart },
+    dataDispatch,
+  } = useData();
+  console.log(wishlist, cart);
   const navigate = useNavigate();
 
+  const productExistInCart = checkIncludes(cart, productData._id);
+  const productExistInWishlist = checkIncludes(wishlist, productData._id);
   const handleAddToWishlist = (e) => {
     e.stopPropagation();
     return token
-      ? toast.promise(addToWishlist(token, productData), {
+      ? toast.promise(addToWishlist(token, productData, dataDispatch), {
           loading: "Adding to Wishlist",
           success: "Added to Wishlist",
           error: "something went wrong",
@@ -34,25 +44,29 @@ export const ProductsCard = ({ productData }) => {
   const handleRemoveFromWishlist = (e) => {
     e.stopPropagation();
     return token
-      ? toast.promise(removeFromWishlist(token, productData._id), {
-          loading: "Removing from Wishlist",
-          success: "Removed from Wishlist",
-          error: "something went wrong",
-        })
+      ? toast.promise(
+          removeFromWishlist(token, productData._id, dataDispatch),
+          {
+            loading: "Removing from Wishlist",
+            success: "Removed from Wishlist",
+            error: "something went wrong",
+          }
+        )
       : navigate("/auth");
   };
   const handleAddToCart = (e) => {
     e.stopPropagation();
     //add condition token && not includes in cart
-    if (token) {
-      addToCart(token, productData);
+    if (token && !productExistInCart) {
+      addToCart(token, productData, dataDispatch);
     } else if (!token) {
       navigate("/auth");
     }
     //add condition token && includes in cart
-    else if (token) {
-      navigate('/cart');
+    else if (token && productExistInCart) {
+      navigate("/cart");
     }
+    console.log(productData);
   };
 
   return (
@@ -104,20 +118,26 @@ export const ProductsCard = ({ productData }) => {
 
         <div className="prodcard-icon-container">
           <p className="prodcard-category">{productData?.category}</p>
-
-          <div className="prodcard-icon-div">
-            <BsBag className="prodcard-icon" onClick={handleAddToWishlist} />
-          </div>
-
-          <div className="prodcard-icon-div">
-            <BsFillBagFill
-              className="prodcard-icon"
-              onClick={handleRemoveFromWishlist}
-            />
-          </div>
+          
+          {productExistInWishlist ? (
+            <div className="prodcard-icon-div">
+              <BsFillBagFill
+                className="prodcard-icon"
+                onClick={handleRemoveFromWishlist}
+              />
+            </div>
+          ) : (
+            <div className="prodcard-icon-div">
+              <BsBag className="prodcard-icon" onClick={handleAddToWishlist} />
+            </div>
+          )}
         </div>
-        <Button className="prodcard-button" variant="dark">
-          Add To Cart
+        <Button
+          className="prodcard-button"
+          variant="dark"
+          onClick={handleAddToCart}
+        >
+          {productExistInCart ? "Go To Cart" : "Add To Cart"}
         </Button>
       </div>
     </motion.div>

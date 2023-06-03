@@ -34,6 +34,16 @@ export const dataReducer = (state, action) => {
         ...state,
         address: action.payload,
       };
+    case "INIT_CART":
+      return{
+        ...state,
+        cart:action.payload,
+      }
+    case "INIT_WISHLIST":
+      return {
+        ...state,
+        wishlist:action.payload,
+      }
     case "ADD_TO_CART":
       return {
         ...state,

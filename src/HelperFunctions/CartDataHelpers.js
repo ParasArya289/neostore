@@ -1,4 +1,5 @@
 export const addToCart = async (token, product, dataDispatch) => {
+  console.log(product)
   try {
     const res = await fetch("api/user/cart", {
       method: "POST",
@@ -12,7 +13,7 @@ export const addToCart = async (token, product, dataDispatch) => {
       throw new Error("Something went wrong");
     }
     const { cart } = await res.json();
-    dataDispatch({ type: "INIT_CART", payload: cart });
+    dataDispatch({ type: "INIT_CART", payload: [...cart] });
     console.log(cart);
   } catch (e) {
     throw Error(e);
