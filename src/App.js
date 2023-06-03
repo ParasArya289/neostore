@@ -17,10 +17,11 @@ function App() {
       {/* <Mockman/> */}
       <Navbar />
       <Toaster position="top-right" reverseOrder={false} toastOptions={{
-          style: {
-            marginTop:"60px"
-          },
-        }}/>
+        style: {
+          marginTop:"60px"
+        },
+        }}
+        />
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />

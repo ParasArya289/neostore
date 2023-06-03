@@ -5,14 +5,11 @@ import { Searchbar } from "../Searchbar/Searchbar";
 import { BsCart } from "react-icons/bs";
 import { BsBag } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
-import { Badge } from "react-bootstrap";
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext, useState } from "react";
-import { authContext, useAuth } from "../../contexts/authContext";
+import {useAuth } from "../../contexts/authContext";
 import { useData } from "../../contexts/dataContext";
 
 export const Navbar = () => {
-  const [test, setTest] = useState(0);
   const { token } = useAuth();
   const{dataState:{wishlist,cart}} = useData();
   const activeNavStyle = ({ isActive }) => {
@@ -23,7 +20,6 @@ export const Navbar = () => {
   return (
     <AnimatePresence>
       <motion.nav
-        onClick={() => setTest(test + 1)}
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
