@@ -42,7 +42,7 @@ export const ProductNavbar = ({ categories, handleShow }) => {
         <TfiFilter className="products-nav-icon" onClick={handleShow} />
         {categories.map(({ id, name, category }) => (
           <>
-            <div key={id} class="vr-container">
+            <div key={name} class="vr-container">
               <div className="products-nav-item-vr"></div>
             </div>
             <p

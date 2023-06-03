@@ -35,11 +35,17 @@ export const ProductsCard = ({ productData }) => {
   const handleAddToWishlist = (e) => {
     e.stopPropagation();
     return token
-      ? toast.promise(addToWishlist(token, productData, dataDispatch), {
-          loading: "Adding to Wishlist",
-          success: "Added to Wishlist",
-          error: "something went wrong",
-        })
+      ? toast.promise(
+          addToWishlist(token, productData, dataDispatch),
+          {
+            loading: "Adding to Wishlist",
+            success: "Added to Wishlist",
+            error: "something went wrong",
+          },
+          {
+            id: "toast",
+          }
+        )
       : navigate("/auth");
   };
   const handleRemoveFromWishlist = (e) => {
@@ -51,6 +57,9 @@ export const ProductsCard = ({ productData }) => {
             loading: "Removing from Wishlist",
             success: "Removed from Wishlist",
             error: "something went wrong",
+          },
+          {
+            id: "toast",
           }
         )
       : navigate("/auth");
@@ -59,7 +68,17 @@ export const ProductsCard = ({ productData }) => {
     e.stopPropagation();
     //add condition token && not includes in cart
     if (token && !productExistInCart) {
-      addToCart(token, productData, dataDispatch);
+      toast.promise(
+        addToCart(token, productData, dataDispatch),
+        {
+          loading: "Adding To Cart",
+          success: "Added To Cart",
+          error: "Something Went Wrong",
+        },
+        {
+          id: "toast",
+        }
+      );
     } else if (!token) {
       navigate("/auth");
     }
@@ -67,6 +86,7 @@ export const ProductsCard = ({ productData }) => {
     else if (token && productExistInCart) {
       navigate("/cart");
     }
+
     console.log(productData);
   };
 
@@ -94,7 +114,7 @@ export const ProductsCard = ({ productData }) => {
         <div className="prodcard-infoholder">
           <p className="prodcard-name">{productData?.name}</p>
 
-          <p>{formatCurrency(productData.price,"INR")}</p>
+          <p>{formatCurrency(productData.price, "INR")}</p>
           {productData?.colors.map((clr) => (
             <div
               className="prodcard-clr"
@@ -124,7 +144,7 @@ export const ProductsCard = ({ productData }) => {
               <motion.div
                 initial={{ opacity: 0.5, scale: 2 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0,y:100 }}
+                exit={{ opacity: 0, scale: 0, y: 100 }}
                 transition={{ duration: 0.4, delay: 0 }}
                 className="prodcard-icon-div"
               >

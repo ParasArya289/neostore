@@ -41,7 +41,7 @@ export const Navbar = () => {
           >
             <BsBag />
             <motion.Badge
-              key={wishlist.length}
+              key={wishlist.length+"w"}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -58,7 +58,7 @@ export const Navbar = () => {
           >
             <BsCart />
             <motion.Badge
-              key={cart.length}
+              key={`${cart.length}c`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
