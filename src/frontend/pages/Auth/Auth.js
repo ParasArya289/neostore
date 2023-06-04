@@ -13,7 +13,7 @@ export const Auth = () => {
   const [ref, { height }] = useMeasure();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location?.state?.from)
+  
   useEffect(() => {
     if (token) {
       const navi = (location?.state?.from === "/user" && "/products")||(location?.state?.from ?? "/products" )

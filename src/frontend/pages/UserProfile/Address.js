@@ -4,18 +4,19 @@ import {FiEdit2} from "react-icons/fi"
 import {AiOutlineDelete} from 'react-icons/ai'
 export const Address = () => {
   const {
-    dataState: { address },dataDipatch
+    dataState: { address },dataDispatch
   } = useData();
 
   const deleteAddressHandler = (adID) =>{
-    dataDipatch({type:"DELETE_ADDRESS",payload:adID})
+    console.log(adID)
+    dataDispatch({type:"DELETE_ADDRESS",payload:adID})
   }
 
   const addAddressHandler = () => {
   }
 
   const updateAddressHandler = (adID) =>{
-    
+
   }
 
   return (
@@ -30,7 +31,8 @@ export const Address = () => {
           <p>Mobile: {ad.mobile}</p>
           <div className='address-icons'>
             <FiEdit2 className='address-icon-edit'/>
-            <AiOutlineDelete className='address-icon-dlt'/>
+            <AiOutlineDelete className='address-icon-dlt'
+            onClick={()=>deleteAddressHandler(ad.id)}/>
           </div>
         </div >
       ))}

@@ -1,4 +1,4 @@
-const defaultAddress = {
+export const defaultAddress = {
   id: 1,
   name: "Paras Arya",
   locality: "GM-289/Sector-G/DD Nagar",
@@ -16,7 +16,7 @@ export const initDataState = {
   featured: [],
   cart: [],
   wishlist: [],
-  address: [defaultAddress],
+  address: [],
   isCartLoading: false,
   isWishlistLoading: false,
   isProductsLoading: false,
@@ -43,7 +43,7 @@ export const dataReducer = (state, action) => {
     case "INIT_ADDRESS":
       return {
         ...state,
-        address: action.payload,
+        address: [action.payload],
       };
     case "INIT_CART":
       return {
@@ -104,6 +104,12 @@ export const dataReducer = (state, action) => {
           state.cart.find(({ id }) => id === action.payload),
         ],
         wishlist: state.wishlist.filter(({ id }) => id !== action.payload),
+      };
+
+    case "DELETE_ADDRESS":
+      return {
+        ...state,
+        address: state.address.filter(({ id }) => id !== action.payload)
       };
   }
 };
