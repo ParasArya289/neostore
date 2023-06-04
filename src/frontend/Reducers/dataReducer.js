@@ -1,3 +1,14 @@
+const defaultAddress = {
+  id: 1,
+  name: "Paras Arya",
+  locality: "GM-289/Sector-G/DD Nagar",
+  city: "Gwalior",
+  state: "Madhya Pradesh",
+  country: "India",
+  pincode: "474005",
+  mobile: "123456789",
+};
+
 export const initDataState = {
   products: [],
   categories: [],
@@ -5,7 +16,7 @@ export const initDataState = {
   featured: [],
   cart: [],
   wishlist: [],
-  address: [],
+  address: [defaultAddress],
   isCartLoading: false,
   isWishlistLoading: false,
   isProductsLoading: false,
@@ -35,15 +46,15 @@ export const dataReducer = (state, action) => {
         address: action.payload,
       };
     case "INIT_CART":
-      return{
+      return {
         ...state,
-        cart:action.payload,
-      }
+        cart: action.payload,
+      };
     case "INIT_WISHLIST":
       return {
         ...state,
-        wishlist:action.payload,
-      }
+        wishlist: action.payload,
+      };
     case "ADD_TO_CART":
       return {
         ...state,

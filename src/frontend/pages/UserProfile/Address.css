@@ -1,0 +1,34 @@
+.address-main{
+    text-align: left;
+    min-height: 200px;
+    margin: 20px;
+    position: relative;
+}
+
+.address-container > p{
+    font-size: smaller;
+}
+.address-btn{
+    position: absolute;
+    bottom: 10px;
+}
+.address-btn:hover{
+    color:grey;
+    transition: color 0.2s ease-in-out;
+}
+.address-icons{
+    font-size: larger;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.address-icon-dlt:hover{
+    color: red;
+    transition: color 0.2s ease-in-out;
+}
+.address-icon-edit:hover{
+    color: grey;
+    transition: color 0.2s ease-in-out;
+}

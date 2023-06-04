@@ -2,6 +2,7 @@ import { useState } from "react";
 import useMeasure from "react-use-measure";
 import { motion } from "framer-motion";
 import { Profile } from "./Profile";
+import { Address } from "./Address";
 
 export const UserProfile = () => {
   const [userUi, setUserUi] = useState("user");
@@ -29,7 +30,7 @@ export const UserProfile = () => {
             Address
           </button>
         </header>
-        <div ref={ref}>{userUi === "user" ? <Profile /> : "world"}</div>
+        <div ref={ref}>{userUi === "user" ? <Profile /> : <Address/>}</div>
       </motion.div>
     </>
   );
