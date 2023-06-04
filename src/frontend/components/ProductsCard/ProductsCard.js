@@ -32,6 +32,7 @@ export const ProductsCard = ({ productData, isWishlist }) => {
 
   const productExistInCart = checkIncludes(cart, productData._id);
   const productExistInWishlist = checkIncludes(wishlist, productData._id);
+
   const handleAddToWishlist = (e) => {
     e.stopPropagation();
     return token
@@ -89,6 +90,13 @@ export const ProductsCard = ({ productData, isWishlist }) => {
 
     console.log(productData);
   };
+
+  const handleMoveToCart = (e)=>{
+    if(token && isWishlist && !productExistInCart){
+      handleRemoveFromWishlist(e)
+      handleAddToCart(e)
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -170,7 +178,7 @@ export const ProductsCard = ({ productData, isWishlist }) => {
           <Button
             className="prodcard-button"
             variant="dark"
-            onClick={handleAddToCart}
+            onClick={handleMoveToCart}
           >
             {productExistInCart ? "Go To Cart" : "Move To Cart"}
           </Button>
