@@ -1,0 +1,17 @@
+.profile-main{
+    text-align: left;
+    height: 200px;
+    margin: 10px 30px;
+}
+.profile-details{
+    display: flex;
+    flex-direction: row;
+    margin:20px 0px;
+}
+.profile-column{
+    margin-right: 25px;
+}
+.profile-heading{
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}

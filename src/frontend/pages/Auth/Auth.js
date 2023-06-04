@@ -8,7 +8,7 @@ import "./Auth.css";
 import useMeasure from "react-use-measure";
 
 export const Auth = () => {
-  const [loginUi, setLoginUi] = useState(true);
+  const [loginUi, setLoginUi] = useState("login");
   const { token } = useContext(authContext);
   const [ref, { height }] = useMeasure();
   const navigate = useNavigate();
@@ -29,19 +29,19 @@ export const Auth = () => {
     >
       <header className="auth-header">
         <button
-          style={{ background: !loginUi ? "#d1d5db" : "#9ca3af" }}
-          onClick={() => setLoginUi(!loginUi)}
+          style={{ background: loginUi !== "login" ? "#262626" : "#404040" }}
+          onClick={() => setLoginUi("login")}
         >
           LogIn
         </button>
         <button
-          style={{ background: loginUi ? "#d1d5db" : "#9ca3af" }}
-          onClick={() => setLoginUi(!loginUi)}
+          style={{ background: loginUi !== "signup" ? "#262626" : "#404040" }}
+          onClick={() => setLoginUi("signup")}
         >
           SignUp
         </button>
       </header>
-      <div ref={ref}>{loginUi ? <Login /> : <Signin />}</div>
+      <div ref={ref}>{loginUi==="login" ? <Login /> : <Signin />}</div>
     </motion.div>
   );
 };

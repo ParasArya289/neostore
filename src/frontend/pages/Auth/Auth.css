@@ -13,6 +13,7 @@
     border:solid transparent;
     padding: 12px;
     font-weight: 300;
+    color:white;
 }
 .auth-header > button:nth-child(1){
     border-radius: 12px 0 0 0 ;

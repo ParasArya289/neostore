@@ -55,7 +55,7 @@ export const Signin = () => {
             className="auth-btn"
             type="submit"
             disabled={authLoading}
-            variant="secondary"
+            variant="dark"
           >
             Create Account
           </Button>
@@ -63,7 +63,7 @@ export const Signin = () => {
           <Dropdown.Toggle
             disabled={authLoading}
             split
-            variant="secondary"
+            variant="dark"
             id="dropdown-split-basic"
           />
           <Dropdown.Menu>
