@@ -21,7 +21,7 @@ import { formatCurrency } from "../../utils/formatCurrency";
 
 // id,name,price,rating,colors,image,description,category
 
-export const ProductsCard = ({ productData }) => {
+export const ProductsCard = ({ productData, isWishlist }) => {
   const { token } = useAuth();
   const {
     dataState: { wishlist, cart },
@@ -113,7 +113,6 @@ export const ProductsCard = ({ productData }) => {
         />
         <div className="prodcard-infoholder">
           <p className="prodcard-name">{productData?.name}</p>
-
           <p>{formatCurrency(productData.price, "INR")}</p>
           {productData?.colors.map((clr) => (
             <div
@@ -121,11 +120,9 @@ export const ProductsCard = ({ productData }) => {
               style={{ backgroundColor: clr, width: "20px", height: "20px" }}
             ></div>
           ))}
-
           <p className="prodcard-des">
             {productData?.description.slice(0, 70) + "..."}
           </p>
-
           <div className="prodcard-rating">
             {Array(5)
               .fill(0)
@@ -137,7 +134,6 @@ export const ProductsCard = ({ productData }) => {
                 )
               )}
           </div>
-
           <div className="prodcard-icon-container">
             <p className="prodcard-category">{productData?.category}</p>
             {productExistInWishlist ? (
@@ -162,6 +158,7 @@ export const ProductsCard = ({ productData }) => {
               </div>
             )}
           </div>
+          {!isWishlist?(
           <Button
             className="prodcard-button"
             variant="dark"
@@ -169,23 +166,17 @@ export const ProductsCard = ({ productData }) => {
           >
             {productExistInCart ? "Go To Cart" : "Add To Cart"}
           </Button>
+          ):(
+          <Button
+            className="prodcard-button"
+            variant="dark"
+            onClick={handleAddToCart}
+          >
+            {productExistInCart ? "Go To Cart" : "Move To Cart"}
+          </Button>
+          )}
         </div>
       </motion.div>
     </AnimatePresence>
   );
 };
-
-// export function ProductCard({prod}) {
-//   return (
-//     <Card style={{ width: '18rem' }}>
-//       <Card.Img variant="top" src={prod.image} width="180px"/>
-//       <Card.Body>
-//         <Card.Title>{prod.name}</Card.Title>
-//         <Card.Text>
-//           {prod.description}
-//         </Card.Text>
-//         <Button variant="primary">Add to cart</Button>
-//       </Card.Body>
-//     </Card>
-//   );
-// }
