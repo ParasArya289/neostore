@@ -3,6 +3,7 @@ import "./App.css";
 import { Navbar } from "../src/frontend/components/Navbar/Navbar";
 import { Home } from "../src/frontend/pages/Home/Home";
 import { Products } from "../src/frontend/pages/Products/Products";
+import { SingleProduct } from "../src/frontend/pages/SingleProduct/SingleProduct";
 import { Cart } from "../src/frontend/pages/Cart/Cart";
 import { Wishlist } from "../src/frontend/pages/Wishlist/Wishlist";
 import { Route, Routes } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<SingleProduct />} />
         <Route path="/auth" element={<Auth />} />
         <Route
           path="/cart"

@@ -101,7 +101,7 @@ export const ProductsCard = ({ productData, isWishlist }) => {
   return (
     <AnimatePresence>
       <motion.div
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/products/"+productData._id)}
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -60 }}
