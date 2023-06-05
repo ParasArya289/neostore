@@ -106,6 +106,18 @@ export const dataReducer = (state, action) => {
         wishlist: state.wishlist.filter(({ id }) => id !== action.payload),
       };
 
+    case "ADD_ADDRESS":
+      return{
+        ...state,
+        address:[...state.address,action.payload]
+      }
+
+    case "UPDATE_ADDRESS":
+      return{
+        ...state,
+        address:state.address.map(ad=>ad.id===action.payload.id?action.payload.address:ad)
+      }
+
     case "DELETE_ADDRESS":
       return {
         ...state,

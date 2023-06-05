@@ -1,16 +1,13 @@
 .address-main{
     text-align: left;
-    min-height: 200px;
     margin: 20px;
-    position: relative;
 }
 
 .address-container > p{
     font-size: smaller;
 }
 .address-btn{
-    position: absolute;
-    bottom: 10px;
+    padding: 20px 0;
 }
 .address-btn:hover{
     color:grey;
