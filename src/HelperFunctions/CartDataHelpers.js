@@ -1,7 +1,6 @@
 export const addToCart = async (token, product, dataDispatch) => {
-  console.log(product)
   try {
-    const res = await fetch("api/user/cart", {
+    const res = await fetch("/api/user/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +40,7 @@ export const removeFromCart = async (token, id, dataDispatch) => {
 
 export const addToWishlist = async (token, product, dataDispatch) => {
   try {
-    const res = await fetch("api/user/wishlist", {
+    const res = await fetch("/api/user/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +62,7 @@ export const addToWishlist = async (token, product, dataDispatch) => {
 
 export const removeFromWishlist = async (token, id, dataDispatch) => {
   try {
-    const res = await fetch(`api/user/wishlist/${id}`, {
+    const res = await fetch(`/api/user/wishlist/${id}`, {
       method: "DELETE",
       headers: {
         authorization: token,

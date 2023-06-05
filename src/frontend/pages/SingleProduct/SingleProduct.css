@@ -42,6 +42,9 @@
 .prod-additionalinfo{
     font-size: smaller;
 }
+.prod-additionalinfo>p>span{
+  font-weight: 500;
+}
 .prod-color-selection{
     display: flex;
     align-items: center;
