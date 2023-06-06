@@ -13,10 +13,9 @@ import { checkIncludes } from "../../utils/checkIncludes";
 export const CartCard = ({ prod }) => {
   const { token } = useAuth();
   const {
-    dataState: { cart, wishlist },
+    dataState: { wishlist },
     dataDispatch,
   } = useData();
-  const productExistInCart = checkIncludes(cart, prod?._id);
   const productExistInWishlist = checkIncludes(wishlist, prod?._id);
   const incrementCart = () => {
     if (prod?.qty > 9) {
@@ -46,7 +45,6 @@ export const CartCard = ({ prod }) => {
       );
     }
   };
-
   const handleAddToWishlist = () => {
     if (token && !productExistInWishlist) {
       toast.promise(
@@ -63,7 +61,7 @@ export const CartCard = ({ prod }) => {
       removeFromCart(token, prod?._id, dataDispatch);
     } else if (token && productExistInWishlist) {
       removeFromCart(token, prod?._id, dataDispatch);
-      toast.success("Product Already Exist in Wishlist");
+      toast.success("Product Already Exist in Wishlist", { id: "toast" });
     }
   };
   return (
