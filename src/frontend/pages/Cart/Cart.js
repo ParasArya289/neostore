@@ -1,33 +1,27 @@
+import "./Cart.css";
 import { toast } from "react-hot-toast";
-import { addToCart, removeFromCart } from "../../../HelperFunctions/CartDataHelpers";
+import {
+  addToCart,
+  removeFromCart,
+} from "../../../HelperFunctions/CartDataHelpers";
 import { useAuth } from "../../contexts/authContext";
+import { useData } from "../../contexts/dataContext";
+import { CartCard } from "../../components/CartCard/CartCard";
+import { CartPriceDetail } from "../../components/CartPriceDetail/CartPriceDetail";
 
 export const Cart = () => {
-  const {token} = useAuth()
-  let i=0;
-  const handler = () =>{
-    i++
-    toast.promise(addToCart(token,{_id:i.toString(),name:"banana"}),
-    {
-      loading:'Adding to cart...',
-      success:"Added To cart",
-      error:"something went wrong"
-    }
-    ) 
-  }
-  const handler1 = () =>{
-    toast.promise(removeFromCart(token,1),
-    {
-      loading:'Removing from cart...',
-      success:"Removed from cart",
-      error:"something went wrong"
-    }
-    ) 
-  }
-  return (
-    <>
-      <h1 onClick={handler}>Cart</h1>
-      <h1 onClick={handler1}>Cart2</h1>
-    </>
-  );
+  const {dataState:{cart}} = useData();
+  
+  return<div className="cart-container">
+    <div className="cart-items">
+      <div className="cart-center-item">
+      {cart?.map((prod)=>(
+        <CartCard prod={prod}/>
+      ))}
+      </div>
+    </div>
+    <div className="cart-detail">
+      <CartPriceDetail cart={cart}/>
+    </div>
+  </div>
 };

@@ -37,7 +37,6 @@ export const SingleProduct = () => {
   const colors = uniqueColors(products);
   const productExistInCart = checkIncludes(cart, product?._id);
   const productExistInWishlist = checkIncludes(wishlist, product?._id);
-  console.log(productExistInCart);
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -83,7 +82,7 @@ export const SingleProduct = () => {
       navigate("/wishlist");
     }
   };
-  
+
   return (
     <div className="container">
       <div className="column">
