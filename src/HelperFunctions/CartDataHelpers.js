@@ -38,6 +38,26 @@ export const removeFromCart = async (token, id, dataDispatch) => {
   }
 };
 
+export const updateCart = async (token, id, dataDispatch,type) => {
+  try {
+    const res = await fetch(`/api/user/cart/${id}`, {
+      method: "POST",
+      headers: {
+        authorization: token,
+      },
+      body: JSON.stringify({ action: { type } }),
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { cart } = await res.json();
+    dataDispatch({ type: "INIT_CART", payload: cart });
+    console.log(cart);
+  } catch (e) {
+    throw Error(e);
+  }
+};
+
 export const addToWishlist = async (token, product, dataDispatch) => {
   try {
     const res = await fetch("/api/user/wishlist", {

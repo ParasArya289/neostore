@@ -27,6 +27,8 @@ export const AuthContextProvider = ({ children }) => {
           throw new Error("Your not registered, Signup to continue");
         } else if (res.status === 401) {
           throw new Error("Wrong email or password");
+        }else{
+          throw new Error(res.status)
         }
       }
       if (res.status === 200) {
@@ -52,6 +54,8 @@ export const AuthContextProvider = ({ children }) => {
       if (!res.ok) {
         if (res.status === 422) {
           throw new Error("Account by this Email already exist");
+        }else{
+          throw new Error(res.status)
         }
       }
       if (res.status === 201) {

@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import { CartPriceCounter } from "../../utils/CartPriceCalculator";
 import { formatCurrency } from "../../utils/formatCurrency";
 import './CartPrice.css';
+
 export const CartPriceDetail = ({ cart }) => {
     const {total,totalProduct} = CartPriceCounter(cart);
   return (
