@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { authContext } from "../../../contexts/authContext";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
-import{motion} from 'framer-motion';
+import { motion } from "framer-motion";
 
 export const Signin = () => {
   const { token, user, singupHandler, authLoading } = useContext(authContext);
@@ -28,7 +28,11 @@ export const Signin = () => {
     passwordRef.current.value = "test";
   };
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:0.2}}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.2 }}
+    >
       <h1 className="auth-heading">SignUp</h1>
       <form className="auth-form" ref={formRef} onSubmit={handleSubmit}>
         <input
@@ -36,19 +40,28 @@ export const Signin = () => {
           type="text"
           name="firstName"
           placeholder="First Name"
+          required
         />
         <input
           ref={lastNameRef}
           type="text"
           name="lastName"
           placeholder="Last Name"
+          required
         />
-        <input ref={emailRef} type="email" name="email" placeholder="Email" />
+        <input
+          ref={emailRef}
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
         <input
           ref={passwordRef}
           type="password"
           name="password"
           placeholder="password"
+          required
         />
         <Dropdown className="auth-dropdown" as={ButtonGroup}>
           <Button

@@ -34,12 +34,13 @@ console.log(token)
     >
       <h1 className="auth-heading">LogIn</h1>
       <form ref={formRef} className="auth-form" onSubmit={handleSubmit}>
-        <input ref={emailRef} type="email" name="email" placeholder="Email" />
+        <input ref={emailRef} type="email" name="email" placeholder="Email" required/>
         <input
           ref={passwordRef}
           type="password"
           name="password"
           placeholder="password"
+          required
         />
         <Dropdown className="auth-dropdown" as={ButtonGroup}>
           <Button
