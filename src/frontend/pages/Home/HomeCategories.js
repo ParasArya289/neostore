@@ -22,7 +22,7 @@ export const HomeCategories = () => {
             transition={{ duration: 0.5 }}
           >
             <h3>{category.name}</h3>
-            <p>{category.description}</p>
+            <p>{"Discover "+category.name}</p>
           </motion.div>
         ))}
       </div>

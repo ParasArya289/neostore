@@ -57,13 +57,14 @@ body {
 }
 
 .category h3 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   color: #333;
 }
 
 .category p {
   color: #777;
+  font-size: small;
 }
 .gradient-bg {
   position: absolute;
