@@ -42,6 +42,10 @@ body {
   padding: 2rem;
   background-color: #f8f8f8;
 }
+.categories-container h2{
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
 
 .categories {
   display: grid;
@@ -58,6 +62,7 @@ body {
 
 .category h3 {
   font-size: 1rem;
+  font-weight: 100;
   margin-bottom: 1rem;
   color: #333;
 }
