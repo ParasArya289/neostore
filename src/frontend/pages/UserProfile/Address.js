@@ -4,6 +4,7 @@ import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useState } from "react";
 import AddressModal from "./addressModal";
+import { toast } from "react-hot-toast";
 export const Address = () => {
   const [show, setShow] = useState(false);
   const [updateAddress, setUpdateAddress] = useState(false);
@@ -17,7 +18,7 @@ export const Address = () => {
   const handleShow = () => setShow(true);
 
   const deleteAddressHandler = (adID) => {
-    console.log(adID);
+    toast.success("Address Removed", { id: "toast" });
     dataDispatch({ type: "DELETE_ADDRESS", payload: adID });
   };
 
@@ -26,7 +27,6 @@ export const Address = () => {
     setUpdateAddress(true);
     setAddressId(adID);
   };
-  console.log(addressId)
 
   return (
     <div className="address-main">
@@ -38,7 +38,7 @@ export const Address = () => {
         addressId={addressId}
       />
       <h5 className="profile-heading">Your Addresses</h5>
-      {address.map((ad,i) => (
+      {address.map((ad, i) => (
         <div key={ad.id} className="address-container">
           <p>{ad.name}</p>
           <p>
@@ -55,7 +55,7 @@ export const Address = () => {
               onClick={() => deleteAddressHandler(ad.id)}
             />
           </div>
-          {address.length>1 &&<hr/>}
+          {address.length > 1 && <hr />}
         </div>
       ))}
       <h6 className="address-btn" onClick={handleShow}>

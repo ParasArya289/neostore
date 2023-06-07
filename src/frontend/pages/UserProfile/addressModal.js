@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-hot-toast";
 import { useData } from "../../contexts/dataContext";
 
 function AddressModal({
@@ -32,32 +33,34 @@ function AddressModal({
     setValidated(false);
   };
 
-  const fillFormWithExistingAddress = () => {
-    
-  };
+  // const fillFormWithExistingAddress = () => {
+
+  // };
 
   const createFormData = () => {
     const formData = new FormData(formRef.current);
     const values = Object.fromEntries(formData.entries());
     values["id"] = address.length + 1;
     return values;
-};
+  };
 
-const addAddressSubmitHandler = () => {
+  const addAddressSubmitHandler = () => {
     if (formRef.current) {
-        if (formRef.current.checkValidity()) {
-            const values = createFormData();
-            setValidated(false);
-            dataDispatch({ type: "ADD_ADDRESS", payload: values });
-            handleClose();
-        } else {
-            setValidated(true);
-        }
+      if (formRef.current.checkValidity()) {
+        const values = createFormData();
+        setValidated(false);
+        dataDispatch({ type: "ADD_ADDRESS", payload: values });
+        handleClose();
+        toast.success("Address Added", { id: "toast" });
+      } else {
+        setValidated(true);
+      }
     }
-};
-const updateAddressSubmitHandler = () => {
+  };
+  const updateAddressSubmitHandler = () => {
+    toast.success("Address Updated", { id: "toast" });
     if (formRef.current) {
-        if (formRef.current.checkValidity()) {
+      if (formRef.current.checkValidity()) {
         const values = createFormData();
         setValidated(false);
         dataDispatch({
@@ -89,14 +92,14 @@ const updateAddressSubmitHandler = () => {
         </Modal.Header>
         <Modal.Body>
           <Form ref={formRef} noValidate validated={validated}>
-              <Form.Control
-                className="mb-3"
-                type="text"
-                placeholder="Full Name"
-                name="name"
-                autoFocus
-                required
-              />
+            <Form.Control
+              className="mb-3"
+              type="text"
+              placeholder="Full Name"
+              name="name"
+              autoFocus
+              required
+            />
 
             <Form.Control
               ref={localityRef}
@@ -149,7 +152,6 @@ const updateAddressSubmitHandler = () => {
               required
             />
           </Form>
-          
         </Modal.Body>
         <Modal.Footer>
           {updateAddress ? (

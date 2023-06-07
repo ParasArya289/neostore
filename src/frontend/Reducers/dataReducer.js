@@ -107,21 +107,23 @@ export const dataReducer = (state, action) => {
       };
 
     case "ADD_ADDRESS":
-      return{
+      return {
         ...state,
-        address:[...state.address,action.payload]
-      }
+        address: [...state.address, action.payload],
+      };
 
     case "UPDATE_ADDRESS":
-      return{
+      return {
         ...state,
-        address:state.address.map(ad=>ad.id===action.payload.id?action.payload.address:ad)
-      }
+        address: state.address.map((ad) =>
+          ad.id === action.payload.id ? action.payload.address : ad
+        ),
+      };
 
     case "DELETE_ADDRESS":
       return {
         ...state,
-        address: state.address.filter(({ id }) => id !== action.payload)
+        address: state.address.filter(({ id }) => id !== action.payload),
       };
   }
 };
