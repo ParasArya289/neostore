@@ -24,6 +24,7 @@ export const Products = () => {
     rating: searchParams.getAll("rating"),
     color: searchParams.getAll("color"),
     price: searchParams.get("price") ? searchParams.get("price") : "150000",
+    search:searchParams.getAll("search")
   };
   
   const filteredProducts = filterProductsOnParams(params, dataState?.products);

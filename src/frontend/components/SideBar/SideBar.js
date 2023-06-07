@@ -13,6 +13,7 @@ export let initState = {
   rating: [],
   color: [],
   price: [],
+  search:[],
 };
 export const SideBar = ({ showSidebar, handleClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -45,6 +46,7 @@ export const SideBar = ({ showSidebar, handleClose }) => {
       rating: searchParams.getAll("rating"),
       color: searchParams.getAll("color"),
       price: searchParams.get("price") ? searchParams.get("price") : "150000",
+      search:searchParams.getAll("search")
     };
     updatePriceParams(initState.price);
   }, []);
@@ -127,6 +129,7 @@ export const SideBar = ({ showSidebar, handleClose }) => {
       rating: [],
       color: [],
       price: "150000",
+      search:[],
     };
     setSearchParams(createSearchParams(initState));
   };
