@@ -1,45 +1,46 @@
-.navbar{
-    position: sticky;
-    top:0;
-    left: 0;
-    right:0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0px 2px 15px rgba(7, 7, 7, 0.1);
-    border:1px solid rgba(255, 255, 255, 0.247);
-    z-index: 99999;
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0px 2px 15px rgba(7, 7, 7, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.247);
+  z-index: 99999;
 }
 
-.navbar-title-navlink,.navbar-navlinks{
-    text-decoration:none;
+.navbar-title-navlink,
+.navbar-navlinks {
+  text-decoration: none;
 }
 
-.navbar-title{
-font-weight: 300;
-font-size: medium;
-color:black;
+.navbar-title {
+  font-weight: 300;
+  font-size: medium;
+  color: black;
 }
 
-.navbar-links{
-    font: 1rem;
+.navbar-links {
+  font: 1rem;
 }
 
-.navbar-navlinks{
-    color:rgb(33, 33, 33);
-    font-size: 1.2rem;
-    padding:1.5rem;
+.navbar-navlinks {
+  color: rgb(33, 33, 33);
+  font-size: 1.2rem;
+  padding: 1.5rem;
 }
 
-.nav-badge{
-font-size: 10px;
-font-weight: 500;
-position: absolute;
-top: 10;
-margin-left: 2px;
+.nav-badge {
+  font-size: 10px;
+  font-weight: 500;
+  position: absolute;
+  top: 10;
+  margin-left: 2px;
 }
 
 .navbar-navlinks:hover,

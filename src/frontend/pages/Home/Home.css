@@ -45,6 +45,8 @@ body {
 .categories-container h2{
   margin-bottom: 2rem;
   font-size: 1.2rem;
+  font-weight: 500;
+
 }
 
 .categories {
@@ -62,7 +64,7 @@ body {
 
 .category h3 {
   font-size: 1rem;
-  font-weight: 100;
+  font-weight: 400;
   margin-bottom: 1rem;
   color: #333;
 }
@@ -98,5 +100,11 @@ body {
 @media (max-width: 768px) {
   .categories {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .banner h1{
+    font-size: 1.8rem;
+  }
+  .banner p{
+    font-size: 1rem;
   }
 }
