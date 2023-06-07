@@ -35,3 +35,8 @@
     color:rgba(0, 0, 0, 0.89);
     transition: color 0.3s ease-in-out;
 }
+@media screen and (max-width: 450px) {
+    .searchbar{
+        display: none;
+    }
+  }
