@@ -49,11 +49,13 @@ span:nth-child(3):hover {
 @media screen and (max-width: 900px) {
   .cartcard-container {
     width: 450px;
+    margin:20px
   }
 }
 
 @media screen and (max-width: 450px) {
   .cartcard-container {
     width: 370px;
+    margin:20px
   }
 }
