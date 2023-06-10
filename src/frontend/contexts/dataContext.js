@@ -15,8 +15,6 @@ export const dataContext = createContext();
 
 export const DataContext = ({ children }) => {
   const [dataState, dataDispatch] = useReducer(dataReducer, initDataState);
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     fetchProducts(dataDispatch);

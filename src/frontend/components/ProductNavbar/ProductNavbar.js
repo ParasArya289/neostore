@@ -1,36 +1,20 @@
 import "./ProductNavbar.css";
 import { TfiFilter } from "react-icons/tfi";
 import { motion } from "framer-motion";
-import { useSearchParams } from "react-router-dom";
-import { initState } from "../SideBar/SideBar";
-import { useState } from "react";
+import { useFilterParams } from "../../contexts/filterParamsContext";
+
 export const ProductNavbar = ({ categories, handleShow }) => {
-  const [check,unCheck] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  let state = initState;
+  const { paramState, dispatchParams } = useFilterParams();
+
   const updateCategoryParams = (category) => {
-    const checkExistence = searchParams.getAll("category")
-    if(checkExistence.includes(category)){
-      state={
-        ...state,
-        category:checkExistence.filter((catg)=>catg!==category)
-      }
-      setSearchParams(state)
-    }else{
-      state={
-      ...state,
-      category
+    const checkExistence = paramState?.category;
+    if (checkExistence.includes(category)) {
+      dispatchParams({ type: "UPDATE_CATEGORY_UNCHECKED", payload: category });
+    } else {
+      dispatchParams({ type: "UPDATE_CATEGORY_SINGLE", payload: category });
     }
-    setSearchParams(state)
-    }
-    
-    
-  }
-  const clearCategoryParams = () =>{
-    state={
-      ...state,
-    }
-  }
+  };
+
   return (
     <>
       <motion.nav
@@ -48,7 +32,9 @@ export const ProductNavbar = ({ categories, handleShow }) => {
             <p
               key={name}
               className="products-nav-item"
-              style={{color:searchParams.getAll("category").includes(category)?'red':''}}
+              style={{
+                color: paramState?.category?.includes(category) ? "red" : "",
+              }}
               onClick={() => updateCategoryParams(category)}
             >
               {name}
