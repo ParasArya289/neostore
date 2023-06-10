@@ -20,7 +20,7 @@ export const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            Welcome to Our Store
+            Welcome to Neostore
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -50 }}
