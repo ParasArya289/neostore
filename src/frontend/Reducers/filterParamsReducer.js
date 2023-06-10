@@ -9,7 +9,13 @@ export const initParamState = {
 export const filterParamReducer = (state, action) => {
   switch (action.type) {
     case "INIT_FILTER":
-      return action.payload;
+      return { ...state, ...action.payload };
+
+    case "RESET_PREFERENCE":
+      return {
+        ...state,
+        resetPreference: !state.resetPreference,
+      };
 
     case "UPDATE_CATEGORY_CHECKED":
       return {
@@ -21,7 +27,11 @@ export const filterParamReducer = (state, action) => {
         ...state,
         category: state.category.filter((c) => c !== action.payload),
       };
-
+    case "UPDATE_CATEGORY_SINGLE":
+      return {
+        ...state,
+        category: [action.payload],
+      };
     case "CLEAR_CATEGORY":
       return {
         ...state,
@@ -75,6 +85,7 @@ export const filterParamReducer = (state, action) => {
       };
     case "CLEAR_ALL":
       return {
+        ...state,
         search: [],
         category: [],
         sort: [],
@@ -82,6 +93,17 @@ export const filterParamReducer = (state, action) => {
         color: [],
         price: "150000",
       };
+    case "CLEAR_WHEN_ON_HOME":
+      return {
+        ...state,
+        search: [],
+        category: [],
+        sort: [],
+        rating: [],
+        color: [],
+        price: [],
+      };
+
     default:
       return state;
   }

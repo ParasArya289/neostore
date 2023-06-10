@@ -13,6 +13,12 @@ export const FilterParamsContextProvider = ({ children }) => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
 
+  /**
+   * on hard refresh if params are available, then set those params
+   * @searchParams is present in url, then get all of the params,
+   * @getAll returns array of params, if no params available then empty array is returned which is interpreted by useSearchParam as "not present".
+   */
+
   useEffect(() => {
     dispatchParams({
       type: "INIT_FILTER",

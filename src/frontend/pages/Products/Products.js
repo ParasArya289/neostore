@@ -5,6 +5,7 @@ import { ProductNavbar } from "../../components/ProductNavbar/ProductNavbar";
 import { ProductsCard } from "../../components/ProductsCard/ProductsCard";
 import { initState, SideBar } from "../../components/SideBar/SideBar";
 import { dataContext, useData } from "../../contexts/dataContext";
+import { useFilterParams } from "../../contexts/filterParamsContext";
 import { capitalizer } from "../../utils/capitalizerFunction";
 import { filterProductsOnParams } from "../../utils/filterProducts";
 import "./Products.css";
@@ -14,27 +15,32 @@ export const Products = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const {
-    dataState,
-  } = useData();
+  const { dataState } = useData();
+  const { paramState } = useFilterParams();
 
-  const params = {
-    category: searchParams.getAll("category"),
-    sort: searchParams.getAll("sort"),
-    rating: searchParams.getAll("rating"),
-    color: searchParams.getAll("color"),
-    price: searchParams.get("price") ? searchParams.get("price") : "150000",
-    search:searchParams.getAll("search")
-  };
-  
-  const filteredProducts = filterProductsOnParams(params, dataState?.products);
+  // const params = {
+  //   category: searchParams.getAll("category"),
+  //   sort: searchParams.getAll("sort"),
+  //   rating: searchParams.getAll("rating"),
+  //   color: searchParams.getAll("color"),
+  //   price: searchParams.get("price") ? searchParams.get("price") : "150000",
+  //   search: searchParams.getAll("search"),
+  // };
+
+  const filteredProducts = filterProductsOnParams(
+    paramState,
+    dataState?.products
+  );
 
   const handleClose = () => setShowSidebar(false);
   const handleShow = () => setShowSidebar(true);
 
   return (
     <>
-      <ProductNavbar categories={dataState?.categories} handleShow={handleShow} />
+      <ProductNavbar
+        categories={dataState?.categories}
+        handleShow={handleShow}
+      />
       <AnimatePresence>
         <motion.p
           initial={{ opacity: 0 }}
@@ -43,9 +49,9 @@ export const Products = () => {
         >
           Showing all{" "}
           <motion.span>
-            {!params.category.length
+            {!paramState?.category.length
               ? "Products"
-              : capitalizer(params.category)}
+              : capitalizer(paramState?.category)}
             ({filteredProducts.length})
           </motion.span>
         </motion.p>

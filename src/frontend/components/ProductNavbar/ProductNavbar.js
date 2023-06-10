@@ -11,7 +11,7 @@ export const ProductNavbar = ({ categories, handleShow }) => {
     if (checkExistence.includes(category)) {
       dispatchParams({ type: "UPDATE_CATEGORY_UNCHECKED", payload: category });
     } else {
-      dispatchParams({ type: "UPDATE_CATEGORY_CHECKED", payload: category });
+      dispatchParams({ type: "UPDATE_CATEGORY_SINGLE", payload: category });
     }
   };
 

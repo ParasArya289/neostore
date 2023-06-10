@@ -28,7 +28,8 @@ export const SideBar = ({ showSidebar, handleClose }) => {
   });
 
   const {
-    dataState: { products, categories },
+    dataState: { products, categories, filterResetPreference },
+    dataDispatch,
   } = useData();
 
   const { paramState, dispatchParams } = useFilterParams();
@@ -36,11 +37,6 @@ export const SideBar = ({ showSidebar, handleClose }) => {
   const colors = uniqueColors(products);
 
   const formatedPrice = formatCurrency(`${paramState.price || 0}`, "INR");
-  /**
-   * on hard refresh if params are available, then set those params
-   * @searchParams is present in url, then get all of the params,
-   * @getAll returns array of params, if no params available then empty array is returned which is interpreted by useSearchParam as "not present".
-   */
 
   useEffect(() => {
     updatePriceParams("150000", dispatchParams);
@@ -153,6 +149,18 @@ export const SideBar = ({ showSidebar, handleClose }) => {
                 />
               )
             )}
+          </div>
+          <div className="filter-header">
+            <p style={{ fontSize: "small" }}>
+              <i>Reset filters when visit homepage</i>
+            </p>
+            <input
+              type="checkbox"
+              checked={filterResetPreference}
+              onChange={() =>
+                dataDispatch({ type: "TOGGLE_FILTER_RESET_PREFERENCE" })
+              }
+            />
           </div>
           <Button
             className="Button"
