@@ -13,11 +13,14 @@ export const updateSortParams = (event, dispatch) => {
 export const updateSearchParams = (e, dispatch) => {
   dispatch({ type: "UPDATE_SEARCH", payload: e.target.value });
 };
-export const updateRatingParams = (dispatch) => {
-  dispatch({ type: "UPDATE_RATING", payload: "" });
+export const updateRatingParams = (rating, dispatch) => {
+  dispatch({ type: "UPDATE_RATING", payload: rating });
 };
-export const updateColorParams = (dispatch) => {
-  dispatch({ type: "UPDATE_COLOR", payload: "" });
+export const updateColorParams = (hex, dispatch) => {
+  dispatch({ type: "UPDATE_COLOR", payload: hex });
+};
+export const updatePriceParams = (price, dispatch) => {
+  dispatch({ type: "UPDATE_PRICE", payload: price });
 };
 
 export const clearRatingParams = (dispatch) => {
@@ -26,9 +29,15 @@ export const clearRatingParams = (dispatch) => {
 export const clearColorParams = (dispatch) => {
   dispatch({ type: "CLEAR_COLOR" });
 };
+export const clearPriceParams = (dispatch) => {
+  dispatch({ type: "CLEAR_PRICE" });
+};
 export const clearSortParams = (dispatch) => {
   dispatch({ type: "CLEAR_SORT" });
 };
 export const clearCategoryParams = (dispatch) => {
   dispatch({ type: "CLEAR_CATEGORY" });
+};
+export const clearAllParams = (dispatch) => {
+  dispatch({ type: "CLEAR_ALL" });
 };

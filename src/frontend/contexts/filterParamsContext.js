@@ -1,12 +1,15 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { fitlerReducer, initFilterState } from "../reducer/filterReducer";
+import {
+  filterParamReducer,
+  initParamState,
+} from "../Reducers/filterParamsReducer";
 import { useSearchParams } from "react-router-dom";
 export const filterContext = createContext();
 
-export const FilterContextProvider = ({ children }) => {
+export const FilterParamsContextProvider = ({ children }) => {
   const [paramState, dispatchParams] = useReducer(
-    fitlerReducer,
-    initFilterState
+    filterParamReducer,
+    initParamState
   );
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -14,14 +17,12 @@ export const FilterContextProvider = ({ children }) => {
     dispatchParams({
       type: "INIT_FILTER",
       payload: {
-        search: searchParams.getAll("search"),
+        search: searchParams.get("search") || [],
         category: searchParams.getAll("category"),
-        sort: searchParams.getAll("sort"),
-        rating: searchParams.getAll("rating"),
-        color: searchParams.getAll("color"),
-        price: searchParams.get("price")
-          ? searchParams.getAll("price")
-          : "150000",
+        sort: searchParams.get("sort") || [],
+        rating: searchParams.get("rating") || [],
+        color: searchParams.get("color") || [],
+        price: searchParams.get("price") || [],
       },
     });
   }, []);
@@ -37,4 +38,4 @@ export const FilterContextProvider = ({ children }) => {
   );
 };
 
-export const useFilter = () => useContext(filterContext);
+export const useFilterParams = () => useContext(filterContext);

@@ -1,13 +1,12 @@
-export const initFilterState = {
+export const initParamState = {
   search: [],
   category: [],
   sort: [],
-  rating:[],
-  color:[],
-  price:"150000",
-  
+  rating: [],
+  color: [],
+  price: [],
 };
-export const fitlerReducer = (state, action) => {
+export const filterParamReducer = (state, action) => {
   switch (action.type) {
     case "INIT_FILTER":
       return action.payload;
@@ -45,25 +44,44 @@ export const fitlerReducer = (state, action) => {
         search: action.payload ? action.payload : [],
       };
     case "UPDATE_RATING":
-    return{
+      return {
         ...state,
-        rating:action.payload
-    }
+        rating: action.payload,
+      };
     case "CLEAR_RATING":
-    return{
-      ...state,
-      rating:[]
-    }
-    case "UPDATE_COLOR":
-    return{
+      return {
         ...state,
-        color:action.payload
-    }
+        rating: [],
+      };
+    case "UPDATE_COLOR":
+      return {
+        ...state,
+        color: action.payload,
+      };
     case "CLEAR_COLOR":
-    return{
-      ...state,
-      color:[]
-    }
+      return {
+        ...state,
+        color: [],
+      };
+    case "UPDATE_PRICE":
+      return {
+        ...state,
+        price: action.payload,
+      };
+    case "CLEAR_PRICE":
+      return {
+        ...state,
+        price: "150000",
+      };
+    case "CLEAR_ALL":
+      return {
+        search: [],
+        category: [],
+        sort: [],
+        rating: [],
+        color: [],
+        price: "150000",
+      };
     default:
       return state;
   }
