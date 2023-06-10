@@ -21,17 +21,7 @@ import {
 } from "../../../HelperFunctions/filterParamsHelpers";
 import { useFilterParams } from "../../contexts/filterParamsContext";
 
-export let initState = {
-  category: [],
-  sort: [],
-  rating: [],
-  color: [],
-  price: [],
-  search: [],
-};
 export const SideBar = ({ showSidebar, handleClose }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const [hover, setHover] = useState({
     state: false,
     end: 0,

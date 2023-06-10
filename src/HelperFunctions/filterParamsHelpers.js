@@ -10,8 +10,8 @@ export const updateSortParams = (event, dispatch) => {
   const { value } = event.target;
   dispatch({ type: "UPDATE_SORT", payload: value });
 };
-export const updateSearchParams = (e, dispatch) => {
-  dispatch({ type: "UPDATE_SEARCH", payload: e.target.value });
+export const updateSearchParams = (query, dispatch) => {
+  dispatch({ type: "UPDATE_SEARCH", payload: query });
 };
 export const updateRatingParams = (rating, dispatch) => {
   dispatch({ type: "UPDATE_RATING", payload: rating });

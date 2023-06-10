@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { initState } from "../SideBar/SideBar";
+import { updateSearchParams } from "../../../HelperFunctions/filterParamsHelpers";
+import { useFilterParams } from "../../contexts/filterParamsContext";
 import "./Searchbar.css";
-const obj = initState;
+
 export const Searchbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  console.log(searchQuery);
+
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { paramState, dispatchParams } = useFilterParams();
   useEffect(() => {
     if (location.pathname === "/products") {
-      setSearchParams({ ...obj, search: searchQuery });
+      updateSearchParams(searchQuery, dispatchParams);
     } else if (location.pathname !== "/products") {
       if (searchQuery) {
         navigate(`/products`);
@@ -24,7 +26,7 @@ export const Searchbar = () => {
         className="searchbar"
         type="search"
         placeholder="Search in Neostore"
-        value={searchParams.get("search")}
+        value={paramState.search}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
     </>
