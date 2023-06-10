@@ -1,39 +1,42 @@
-.offcanvas{
-    z-index: 99999;
-    max-width: 300px;
+.offcanvas {
+  z-index: 99999;
+  max-width: 300px;
 }
-.Button{
-    margin-top: 20px;
-    width: 100%;
+.Button {
+  margin-top: 20px;
+  width: 100%;
 }
-.offcanvas .filter-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-top: 12px;
+.offcanvas .filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 12px;
 }
-.filter-header > h1{
-    font-size: larger;
-    font-weight: 700;
+.filter-header > h1 {
+  font-size: larger;
+  font-weight: 700;
 }
-.filter-header > p{
-    font-size: x-small;
-    font-weight: 500;
-    color:grey;
-    cursor: pointer;
+.filter-header > p {
+  font-size: x-small;
+  font-weight: 500;
+  color: grey;
+  cursor: pointer;
 }
-.offcanvas .filter-section{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+.offcanvas .filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.offcanvas .filter-section label{
-    font-size: medium;
-    font-weight: 500;
-    margin:4px 0;
+.offcanvas .filter-section label {
+  font-size: medium;
+  font-weight: 500;
+  margin: 4px 0;
+}
+.offcanvas input {
+  accent-color: black;
 }
 
-.filter-range{
-    width: 100%;
+.filter-range {
+  width: 100%;
+  height: 5px;
 }

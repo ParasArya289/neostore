@@ -21,6 +21,7 @@ export const initDataState = {
   isWishlistLoading: false,
   isProductsLoading: false,
   isCategoriesLoading: false,
+  filterResetPreference: false,
 };
 
 export const dataReducer = (state, action) => {
@@ -55,6 +56,12 @@ export const dataReducer = (state, action) => {
         ...state,
         wishlist: action.payload,
       };
+    case "TOGGLE_FILTER_RESET_PREFERENCE":
+      return {
+        ...state,
+        filterResetPreference: !state.filterResetPreference,
+      };
+
     case "ADD_TO_CART":
       return {
         ...state,

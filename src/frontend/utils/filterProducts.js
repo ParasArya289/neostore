@@ -1,7 +1,7 @@
 /**
  * Filter Products on the basis of url params
  * @type {function} filterProductsOnParams()
- * @param {object} initState , gives state of all applied filters.
+ * @param {object} state , gives state of all applied filters.
  * @param {array} products
  */
 
@@ -15,27 +15,28 @@ export const filterProductsOnParams = (state, array) => {
     price: prc,
     search,
   } = state;
-  console.log({ state, array, search });
+
   if (catg.length) {
     tempArray = tempArray.filter(({ category }) => catg.includes(category));
   }
-  if (sort.length) {
+  if (!Array.isArray(sort)) {
     tempArray = [...tempArray].sort((a, b) =>
-      sort[0] === "LTH" ? a.price - b.price : b.price - a.price
+      sort === "LTH" ? a.price - b.price : b.price - a.price
     );
   }
-  if (rat.length) {
-    tempArray = tempArray.filter(({ rating }) => rating <= rat[0]);
+  if (!Array.isArray(rat)) {
+    tempArray = tempArray.filter(({ rating }) => rating <= +rat);
   }
-  if (clr.length) {
-    tempArray = tempArray.filter(({ colors }) => colors.includes(clr[0]));
+
+  if (!Array.isArray(clr)) {
+    tempArray = tempArray.filter(({ colors }) => colors.includes(clr));
   }
   if (prc) {
     tempArray = tempArray.filter(({ price }) => price <= prc);
   }
-  if (search.length) {
+  if (!Array.isArray(search)) {
     tempArray = tempArray.filter(({ name }) =>
-      name.toLowerCase().includes(search[0]?.toLowerCase())
+      name.toLowerCase().includes(search?.toLowerCase())
     );
   }
   return tempArray;
