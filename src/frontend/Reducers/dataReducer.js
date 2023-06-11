@@ -16,7 +16,7 @@ export const initDataState = {
   featured: [],
   cart: [],
   address: [defaultAddress],
-  selectedAddress: [defaultAddress],
+  selectedAddress: defaultAddress,
   isCartLoading: false,
   isWishlistLoading: false,
   isProductsLoading: false,
@@ -116,7 +116,10 @@ export const dataReducer = (state, action) => {
     case "ADD_ADDRESS":
       return {
         ...state,
-        address: [...state.address, action.payload],
+        address: [
+          ...state.address,
+          { ...action.payload, id: state.address.length + 1 },
+        ],
       };
 
     case "UPDATE_ADDRESS":
@@ -130,7 +133,7 @@ export const dataReducer = (state, action) => {
     case "ACTIVE_ADDRESS":
       return {
         ...state,
-        selectedAddress: [action.payload],
+        selectedAddress: action.payload,
       };
 
     case "DELETE_ADDRESS":
@@ -138,5 +141,7 @@ export const dataReducer = (state, action) => {
         ...state,
         address: state.address.filter(({ id }) => id !== action.payload),
       };
+    default:
+      return state;
   }
 };

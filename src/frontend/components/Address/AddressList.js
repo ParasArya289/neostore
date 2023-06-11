@@ -2,10 +2,11 @@ import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import "./Address.css";
 
-export const AddressList = ({ address = [], dispatch, selectedAddres }) => {
+export const AddressList = ({ address = [], dispatch, selectedAddress }) => {
   const changeActiveAddress = (ad) => {
     dispatch({ type: "ACTIVE_ADDRESS", payload: ad });
   };
+  console.log(address, selectedAddress);
   return (
     <div className="addresslist-container">
       {address.map((ad) => (
@@ -14,7 +15,7 @@ export const AddressList = ({ address = [], dispatch, selectedAddres }) => {
             <input
               type="radio"
               name="addressGroup"
-              checked={ad?.id === selectedAddres?.id}
+              checked={ad?.id === selectedAddress?.id}
               onChange={() => changeActiveAddress(ad)}
             />
             <div>
