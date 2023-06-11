@@ -11,18 +11,22 @@ import { Auth } from "./frontend/pages/Auth/Auth";
 import { UserProfile } from "./frontend/pages/UserProfile/UserProfile";
 import { PrivateRoute } from "./frontend/components/PrivatRoute/PrivateRoute";
 import { Toaster } from "react-hot-toast";
+import { Checkout } from "./frontend/pages/Checkout/Checkout";
 
 function App() {
   return (
     <div className="App">
       {/* <Mockman/> */}
       <Navbar />
-      <Toaster position="top-right" reverseOrder={false} toastOptions={{
-        style: {
-          marginTop:"95px"
-        },
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            marginTop: "95px",
+          },
         }}
-        />
+      />
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />
@@ -51,6 +55,14 @@ function App() {
           element={
             <PrivateRoute>
               <UserProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
             </PrivateRoute>
           }
         />

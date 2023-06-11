@@ -91,17 +91,17 @@ export const ProductsCard = ({ productData, isWishlist }) => {
     console.log(productData);
   };
 
-  const handleMoveToCart = (e)=>{
-    if(token && isWishlist && !productExistInCart){
-      handleRemoveFromWishlist(e)
-      handleAddToCart(e)
+  const handleMoveToCart = (e) => {
+    if (token && isWishlist && !productExistInCart) {
+      handleRemoveFromWishlist(e);
+      handleAddToCart(e);
     }
-  }
+  };
 
   return (
     <AnimatePresence>
       <motion.div
-        onClick={() => navigate("/products/"+productData._id)}
+        onClick={() => navigate("/products/" + productData._id)}
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -60 }}
@@ -166,22 +166,22 @@ export const ProductsCard = ({ productData, isWishlist }) => {
               </div>
             )}
           </div>
-          {!isWishlist?(
-          <Button
-            className="prodcard-button"
-            variant="dark"
-            onClick={handleAddToCart}
-          >
-            {productExistInCart ? "Go To Cart" : "Add To Cart"}
-          </Button>
-          ):(
-          <Button
-            className="prodcard-button"
-            variant="dark"
-            onClick={handleMoveToCart}
-          >
-            {productExistInCart ? "Go To Cart" : "Move To Cart"}
-          </Button>
+          {!isWishlist ? (
+            <Button
+              className="prodcard-button"
+              variant="dark"
+              onClick={handleAddToCart}
+            >
+              {productExistInCart ? "Go To Cart" : "Add To Cart"}
+            </Button>
+          ) : (
+            <Button
+              className="prodcard-button"
+              variant="dark"
+              onClick={handleMoveToCart}
+            >
+              {productExistInCart ? "Go To Cart" : "Move To Cart"}
+            </Button>
           )}
         </div>
       </motion.div>

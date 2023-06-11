@@ -1,0 +1,10 @@
+.checkoutSummary-container > h4 {
+  font-size: large;
+}
+.checkoutSummary-container {
+  width: height;
+}
+.checkoutSummary-container > .checkout-address {
+  font-size: small;
+  text-align: left;
+}

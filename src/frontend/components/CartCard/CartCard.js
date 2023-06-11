@@ -12,11 +12,14 @@ import { toast } from "react-hot-toast";
 import { checkIncludes } from "../../utils/checkIncludes";
 export const CartCard = ({ prod }) => {
   const { token } = useAuth();
+
   const {
     dataState: { wishlist },
     dataDispatch,
   } = useData();
+
   const productExistInWishlist = checkIncludes(wishlist, prod?._id);
+
   const incrementCart = () => {
     if (prod?.qty > 9) {
       return;

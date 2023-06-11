@@ -40,7 +40,7 @@ function AddressModal({
   const createFormData = () => {
     const formData = new FormData(formRef.current);
     const values = Object.fromEntries(formData.entries());
-    values["id"] = address.length + 1;
+    // values["id"] = address.length + 1;
     return values;
   };
 
@@ -67,7 +67,7 @@ function AddressModal({
           type: "UPDATE_ADDRESS",
           payload: {
             id: addressId,
-            address: values,
+            address: { id: addressId, ...values },
           },
         });
         handleClose();
