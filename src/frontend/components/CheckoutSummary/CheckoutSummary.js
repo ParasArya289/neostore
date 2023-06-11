@@ -1,13 +1,9 @@
 import { Button } from "react-bootstrap";
 import { CartPriceCounter } from "../../utils/CartPriceCalculator";
 import { formatCurrency } from "../../utils/formatCurrency";
-import { useNavigate } from "react-router-dom";
-import "./CartPrice.css";
 
-export const CartPriceDetail = ({ cart }) => {
+export const CheckoutSummary = ({ cart=[] }) => {
   const { total, totalProduct } = CartPriceCounter(cart);
-  const navigate = useNavigate();
-
   return (
     <div className="cartprice-container">
       <h4>Price Details</h4>
@@ -30,9 +26,7 @@ export const CartPriceDetail = ({ cart }) => {
         <p>{formatCurrency(total, "INR")}</p>
       </div>
       <hr />
-      <Button variant="dark" onClick={() => navigate("/checkout")}>
-        Checkout
-      </Button>
+      <Button variant="dark">Checkout</Button>
     </div>
   );
 };

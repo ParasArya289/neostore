@@ -4,25 +4,27 @@
   height: 300px;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
+  margin-top: 10px;
   padding: 20px;
 }
-.cartprice-price{
-    display: flex;
-    justify-content:space-between;
+.cartprice-price {
+  display: flex;
+  justify-content: space-between;
 }
-.price-cl1{
-    text-align: left;
+.price-cl1 {
+  text-align: left;
 }
-.price-cl2{
-    text-align: right;
+.price-cl2 {
+  text-align: right;
 }
-.cartprice-amount{
-    display: flex;
-    justify-content: space-between;
+.cartprice-amount {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 450px) {
-    .cartprice-container {
-      width: 370px;
-    }
+  .cartprice-container {
+    width: 370px;
+    margin-top:none;
   }
+}

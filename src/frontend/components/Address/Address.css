@@ -1,0 +1,27 @@
+.addresslist-container {
+  background-color: white;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: left;
+  margin: 10px;
+  padding: 20px;
+  font-size: smaller;
+  font-weight: 100;
+}
+.addresslist {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 10px; */
+}
+.addresslist > input {
+  margin-right: 10px;
+  accent-color: black;
+}
+
+@media screen and (max-width: 450px) {
+  .addresslist-container {
+    width: 370px;
+    margin: 20px;
+    font-size: smaller;
+  }
+}

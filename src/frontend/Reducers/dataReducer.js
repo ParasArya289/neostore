@@ -15,8 +15,8 @@ export const initDataState = {
   wishlist: [],
   featured: [],
   cart: [],
-  wishlist: [],
-  address: [],
+  address: [defaultAddress],
+  selectedAddress: [defaultAddress],
   isCartLoading: false,
   isWishlistLoading: false,
   isProductsLoading: false,
@@ -125,6 +125,12 @@ export const dataReducer = (state, action) => {
         address: state.address.map((ad) =>
           ad.id === action.payload.id ? action.payload.address : ad
         ),
+      };
+
+    case "ACTIVE_ADDRESS":
+      return {
+        ...state,
+        selectedAddress: [action.payload],
       };
 
     case "DELETE_ADDRESS":
