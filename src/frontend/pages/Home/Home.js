@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { HomeCategories } from "./HomeCategories";
@@ -45,6 +45,6 @@ export const Home = () => {
         </div>
       </div>
       <HomeCategories />
-    </>
+      </>
   );
 };
