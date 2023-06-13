@@ -2,9 +2,7 @@ import { BsBag, BsFillBagFill } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import "./ProductCard.css";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { products } from "../../../backend/db/products";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import {
@@ -109,12 +107,14 @@ export const ProductsCard = ({ productData, isWishlist }) => {
           opacity: { ease: "linear" },
           duration: 0.5,
           delay: 0.2,
-          layout: { duration: 0.4 },
+          layout: {
+            duration: 0.2,
+          },
         }}
         layout
         className="prodcard-container"
       >
-        <img
+        <motion.img
           className="prodcard-image"
           src={productData?.image}
           alt={productData?.name}

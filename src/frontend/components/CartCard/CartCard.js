@@ -10,6 +10,7 @@ import { useAuth } from "../../contexts/authContext";
 import { useData } from "../../contexts/dataContext";
 import { toast } from "react-hot-toast";
 import { checkIncludes } from "../../utils/checkIncludes";
+import { motion,AnimatePresence } from "framer-motion";
 export const CartCard = ({ prod }) => {
   const { token } = useAuth();
 
@@ -68,26 +69,28 @@ export const CartCard = ({ prod }) => {
     }
   };
   return (
-    <div className="cartcard-container">
-      <div className="cartcard-img">
-        <img src={prod?.image} alt={prod?.name} />
-      </div>
-      <div className="cartcard-info">
-        <h4>{prod?.name}</h4>
-        <p>{formatCurrency(prod?.price, "INR")}</p>
-        <p>{prod?.company}</p>
-        <div className="cartcard-qty">
-          <span onClick={decrementCart}>-</span>
-          <span>{prod?.qty}</span>
-          <span onClick={incrementCart}>+</span>
+      <motion.div
+      exit={{opacity:0,x:-200}}
+      className="cartcard-container">
+        <div className="cartcard-img">
+          <img src={prod?.image} alt={prod?.name} />
         </div>
-        <Button variant="dark" className="prod-btn" onClick={remove}>
-          Remove
-        </Button>
-        <Button variant="dark" onClick={handleAddToWishlist}>
-          Wishlist
-        </Button>
-      </div>
-    </div>
+        <div className="cartcard-info">
+          <h4>{prod?.name}</h4>
+          <p>{formatCurrency(prod?.price, "INR")}</p>
+          <p>{prod?.company}</p>
+          <div className="cartcard-qty">
+            <span onClick={decrementCart}>-</span>
+            <span>{prod?.qty}</span>
+            <span onClick={incrementCart}>+</span>
+          </div>
+          <Button variant="dark" className="prod-btn" onClick={remove}>
+            Remove
+          </Button>
+          <Button variant="dark" onClick={handleAddToWishlist}>
+            Wishlist
+          </Button>
+        </div>
+      </motion.div>
   );
 };

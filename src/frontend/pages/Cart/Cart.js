@@ -1,22 +1,19 @@
 import "./Cart.css";
-import { toast } from "react-hot-toast";
-import {
-  addToCart,
-  removeFromCart,
-} from "../../../HelperFunctions/CartDataHelpers";
-import { useAuth } from "../../contexts/authContext";
 import { useData } from "../../contexts/dataContext";
 import { CartCard } from "../../components/CartCard/CartCard";
 import { CartPriceDetail } from "../../components/CartPriceDetail/CartPriceDetail";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Cart = () => {
   const {
     dataState: { cart },
   } = useData();
 
+  const isMobile = window.innerWidth <= 1000;
+
   return (
-    <>
-    <div className="wishlist-header">
+    <AnimatePresence>
+      <div className="wishlist-header">
         {cart.length > 0 ? (
           <p>Showing all carted items({cart.length})</p>
         ) : (
@@ -27,19 +24,32 @@ export const Cart = () => {
         )}
       </div>
       {cart.length > 0 && (
-        <div className="cart-container">
-          <div className="cart-items">
+        <motion.div
+          className="cart-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.div
+            className="cart-items"
+            initial={{ x: isMobile ? 0 : 100, y: isMobile ? 60 : 0 }}
+            animate={{ x: 0, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="cart-center-item">
-              {cart?.map((prod) => (
-                <CartCard prod={prod} />
-              ))}
+              <AnimatePresence>
+                {cart?.map((prod) => (
+                  <CartCard key={prod._id} prod={prod} />
+                ))}
+              </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
           <div className="cart-detail">
             <CartPriceDetail cart={cart} />
           </div>
-        </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 };
