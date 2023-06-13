@@ -1,31 +1,27 @@
 import { motion, stagger, AnimatePresence } from "framer-motion";
-import { useContext, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { updatePriceParams } from "../../../HelperFunctions/filterParamsHelpers";
 import { ProductNavbar } from "../../components/ProductNavbar/ProductNavbar";
 import { ProductsCard } from "../../components/ProductsCard/ProductsCard";
-import { initState, SideBar } from "../../components/SideBar/SideBar";
-import { dataContext, useData } from "../../contexts/dataContext";
+import { SideBar } from "../../components/SideBar/SideBar";
+import { useData } from "../../contexts/dataContext";
 import { useFilterParams } from "../../contexts/filterParamsContext";
 import { capitalizer } from "../../utils/capitalizerFunction";
 import { filterProductsOnParams } from "../../utils/filterProducts";
 import "./Products.css";
-// id,name,price,rating,colors,image,description,category
 
 export const Products = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const { dataState } = useData();
-  const { paramState } = useFilterParams();
+  const { paramState, dispatchParams } = useFilterParams();
 
-  // const params = {
-  //   category: searchParams.getAll("category"),
-  //   sort: searchParams.getAll("sort"),
-  //   rating: searchParams.getAll("rating"),
-  //   color: searchParams.getAll("color"),
-  //   price: searchParams.get("price") ? searchParams.get("price") : "150000",
-  //   search: searchParams.getAll("search"),
-  // };
+  useEffect(() => {
+    updatePriceParams(
+      Array.isArray(paramState?.price) ? "150000" : paramState?.price,
+      dispatchParams
+    );
+  }, []);
 
   const filteredProducts = filterProductsOnParams(
     paramState,

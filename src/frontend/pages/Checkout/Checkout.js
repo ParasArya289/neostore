@@ -11,8 +11,8 @@ export const Checkout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    cart.length === 0 && navigate("/products");
   }, []);
+  cart.length === 0 && navigate("/products");
 
   return (
     <div className="cart-container">

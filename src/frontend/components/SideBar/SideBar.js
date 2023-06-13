@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import "./SideBar.css";
 import { Button, Offcanvas } from "react-bootstrap";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { dataContext, useData } from "../../contexts/dataContext";
-import { createSearchParams, useSearchParams } from "react-router-dom";
+import {useData } from "../../contexts/dataContext";
 import { uniqueColors } from "../../utils/unqiueColors";
 import { formatCurrency } from "../../utils/formatCurrency";
 import {
@@ -37,10 +36,6 @@ export const SideBar = ({ showSidebar, handleClose }) => {
   const colors = uniqueColors(products);
 
   const formatedPrice = formatCurrency(`${paramState.price || 0}`, "INR");
-
-  useEffect(() => {
-    updatePriceParams("150000", dispatchParams);
-  }, []);
 
   return (
     <>
