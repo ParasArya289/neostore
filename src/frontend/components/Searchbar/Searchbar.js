@@ -17,6 +17,7 @@ export const Searchbar = () => {
     } else if (location.pathname !== "/products") {
       if (searchQuery) {
         navigate(`/products`);
+        updateSearchParams(searchQuery, dispatchParams);
       }
     }
   }, [searchQuery]);

@@ -40,7 +40,14 @@ export const Cart = () => {
             <div className="cart-center-item">
               <AnimatePresence>
                 {cart?.map((prod) => (
-                  <CartCard key={prod._id} prod={prod} />
+                  <motion.div 
+                  key={prod._id}
+                  layout
+                  transition={{layout:{type:"spring",
+                  bounce:0.4,duration:0.5}}}
+                  >
+                    <CartCard key={prod._id} prod={prod} />
+                  </motion.div>
                 ))}
               </AnimatePresence>
             </div>
