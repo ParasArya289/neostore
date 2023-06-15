@@ -1,12 +1,17 @@
 import { Button } from "react-bootstrap";
 import { useAuth } from "../../contexts/authContext";
+import { useData } from "../../contexts/dataContext";
 import "./Profile.css"
 export const Profile = () => {
   const { user, token, setToken, setUser } = useAuth();
+  const {dataDispatch}= useData();
+
   const logoutHandler = () => {
     setToken("");
     setUser("");
     localStorage.clear();
+    dataDispatch({type:"INIT_CART",payload:[]})
+    dataDispatch({type:"INIT_WISHLIST",payload:[]})
   };
   console.log(user);
   return (
