@@ -51,7 +51,7 @@ export const Products = () => {
             ({filteredProducts.length})
           </motion.span>
         </motion.p>
-        <motion.div layout className="products-container">
+        <motion.div  className="products-container">
           <SideBar showSidebar={showSidebar} handleClose={handleClose} />
           {filteredProducts.map((product) => (
             <ProductsCard key={product._id} productData={product} />
