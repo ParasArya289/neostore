@@ -1,13 +1,13 @@
 import { useData } from "../../contexts/dataContext";
 import { ProductsCard } from "../../components/ProductsCard/ProductsCard";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import "./Wishlist.css"
 export const Wishlist = () => {
   const {
     dataState: { wishlist },
   } = useData();
   return (
-    <>
+    <AnimatePresence>
       <div className="wishlist-header">
         {wishlist.length > 0 ? (
           <p>Showing all wishlisted items({wishlist.length})</p>
@@ -23,6 +23,6 @@ export const Wishlist = () => {
           <ProductsCard productData={prod} isWishlist={true} />
         ))}
       </motion.div>
-    </>
+    </AnimatePresence>
   );
 };
