@@ -58,7 +58,6 @@ function AddressModal({
     }
   };
   const updateAddressSubmitHandler = () => {
-    toast.success("Address Updated", { id: "toast" });
     if (formRef.current) {
       if (formRef.current.checkValidity()) {
         setValidated(false);
@@ -69,6 +68,7 @@ function AddressModal({
             address: { id: addressId, ...controlledValue },
           },
         });
+        toast.success("Address Updated", { id: "toast" });
         handleClose();
       } else {
         setValidated(true);
