@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -13,19 +13,31 @@ function AddressModal({
   addressId,
 }) {
   const [validated, setValidated] = useState(false);
-
-  const formRef = useRef(null);
-  const nameRef = useRef(null);
-  const localityRef = useRef(null);
-  const cityRef = useRef(null);
-  const stateRef = useRef(null);
-  const countryRef = useRef(null);
-  const pincodeRef = useRef(null);
+  const [controlledValue, setControlledValue] = useState({});
 
   const {
     dataState: { address },
     dataDispatch,
   } = useData();
+
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (updateAddress) {
+      const currentAddress = address.find(({ id }) => id === addressId);
+      setControlledValue(currentAddress);
+      return;
+    }
+    setControlledValue({});
+  }, [addressId, updateAddress]);
+
+  const formValue = (e) => {
+    const { name, value } = e.target;
+    setControlledValue((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleClose = () => {
     setUpdateAddress(false);
@@ -33,23 +45,11 @@ function AddressModal({
     setValidated(false);
   };
 
-  // const fillFormWithExistingAddress = () => {
-
-  // };
-
-  const createFormData = () => {
-    const formData = new FormData(formRef.current);
-    const values = Object.fromEntries(formData.entries());
-    // values["id"] = address.length + 1;
-    return values;
-  };
-
   const addAddressSubmitHandler = () => {
     if (formRef.current) {
       if (formRef.current.checkValidity()) {
-        const values = createFormData();
         setValidated(false);
-        dataDispatch({ type: "ADD_ADDRESS", payload: values });
+        dataDispatch({ type: "ADD_ADDRESS", payload: controlledValue });
         handleClose();
         toast.success("Address Added", { id: "toast" });
       } else {
@@ -61,13 +61,12 @@ function AddressModal({
     toast.success("Address Updated", { id: "toast" });
     if (formRef.current) {
       if (formRef.current.checkValidity()) {
-        const values = createFormData();
         setValidated(false);
         dataDispatch({
           type: "UPDATE_ADDRESS",
           payload: {
             id: addressId,
-            address: { id: addressId, ...values },
+            address: { id: addressId, ...controlledValue },
           },
         });
         handleClose();
@@ -97,58 +96,66 @@ function AddressModal({
               type="text"
               placeholder="Full Name"
               name="name"
+              value={controlledValue?.name}
+              onChange={(e) => formValue(e)}
               autoFocus
               required
             />
 
             <Form.Control
-              ref={localityRef}
               className="mb-3"
               type="text"
               name="locality"
               placeholder="Locality eg, house no, street"
+              value={controlledValue?.locality}
+              onChange={(e) => formValue(e)}
               required
             />
 
             <Form.Control
-              ref={cityRef}
               className="mb-3"
               type="text"
               name="city"
               placeholder="City"
+              value={controlledValue?.city}
+              onChange={(e) => formValue(e)}
               required
             />
 
             <Form.Control
-              ref={stateRef}
               className="mb-3"
               type="text"
               name="state"
               placeholder="State"
+              value={controlledValue?.state}
+              onChange={(e) => formValue(e)}
               required
             />
             <Form.Control
-              ref={countryRef}
               className="mb-3"
               type="text"
               name="country"
               placeholder="Country"
+              value={controlledValue?.country}
+              onChange={(e) => formValue(e)}
               required
             />
             <Form.Control
-              ref={pincodeRef}
               className="mb-3"
               type="number"
               name="pincode"
               placeholder="Pincode"
+              value={controlledValue?.pincode}
+              onChange={(e) => formValue(e)}
               required
             />
             <Form.Control
-              ref={pincodeRef}
               className="mb-3"
               type="number"
               name="mobile"
               placeholder="Mobile Number"
+              value={controlledValue?.mobile}
+              onChange={(e) => formValue(e)}
               required
             />
           </Form>

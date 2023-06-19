@@ -108,7 +108,7 @@ export const ProductsCard = ({ productData, isWishlist }) => {
           duration: 0.5,
           delay: 0.2,
           layout: {
-            type:"spring",
+            type: "spring",
             duration: 0.5,
           },
         }}

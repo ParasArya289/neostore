@@ -46,7 +46,7 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.error(e.message);
-      toast.error(e.message);
+      toast.error(e.message,{id:"toast"});
     } finally {
       setAuthLoading(false);
     }
@@ -73,7 +73,7 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.error(e.message);
-      toast.error(e.message);
+      toast.error(e.message,{id:"toast"});
     } finally {
       setAuthLoading(false);
     }
