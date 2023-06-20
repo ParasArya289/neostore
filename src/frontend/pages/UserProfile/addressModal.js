@@ -16,7 +16,7 @@ function AddressModal({
   const [controlledValue, setControlledValue] = useState({});
 
   const {
-    dataState: { address },
+    dataState: { address, selectedAddress },
     dataDispatch,
   } = useData();
 
@@ -68,6 +68,9 @@ function AddressModal({
             address: { id: addressId, ...controlledValue },
           },
         });
+        if (selectedAddress?.id === addressId) {
+          dataDispatch({ type: "ACTIVE_ADDRESS", payload: controlledValue });
+        }
         toast.success("Address Updated", { id: "toast" });
         handleClose();
       } else {
